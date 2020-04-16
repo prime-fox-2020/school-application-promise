@@ -1,0 +1,26 @@
+<%- include('partials/header', {title: 'Subjects Page'}) %>
+
+<div class="container">
+  <h1>Subjects Page</h1>
+  <br><br>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Subject Name</th>
+        </tr>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(el => { %>
+        <tr>
+          <td><%= el.id %></td>
+          <td><%= el.subject_name %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('partials/footer') %>

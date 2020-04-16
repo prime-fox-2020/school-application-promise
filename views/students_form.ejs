@@ -1,0 +1,38 @@
+<%- include('partials/header', {title: title + ' Students Data'}) %>
+
+<div class="container">
+  <h1><%= title %> Students Data</h1>
+
+  <% if (validate) { %>
+    <div class="alert alert-danger" role="alert">
+      Warning!<br>
+      <%= validate.join(', ') %>
+    </div>
+  <% } %>
+
+  <form method="POST">
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input type="text" class="form-control" id="first_name" name="first_name" value="<%= data ? data.first_name : null %>">
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input type="text" class="form-control" id="last_name" name="last_name" value="<%= data ? data.last_name : null %>">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" name="email" value="<%= data ? data.email : null %>">
+    </div>
+    <div class="form-group">
+      <label for="birth_date">Birth Date</label>
+      <input type="text" class="form-control" id="birth_date" name="birth_date" value="<%= data ? 
+      typeof data.birth_date == 'object' ? 
+      `${new Date(data.birth_date).getDate()}/${new Date(data.birth_date).getMonth()+1}/${new Date(data.birth_date).getFullYear()}`:
+      data.birth_date : null %>">
+      <small id="emailHelp" class="form-text text-muted">Input with format: DD/MM/YYYY (tanggal/bulan/tahun)</small>
+    </div>
+    <button type="submit" class="btn btn-primary"><%= title %> Students Data</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>
