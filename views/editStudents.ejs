@@ -1,0 +1,27 @@
+<%- include('./partials/top')%>
+    <form class="form-inline my-2 my-lg-0">
+      <a href="/students/add" class="btn btn-outline-success my-2 my-sm-0" type="submit">Add New Student</a>
+    </form>
+  </nav>
+  <div class="jumbotron">
+    <% if (error) {%>
+      <p style="color:red"><%= error %></p>
+      <% } %>
+    <form action="/students/<%= data[0].id%>/edit" method="POST">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">First Name</label>
+        <input name="first_name" type="text" class="form-control" id="exampleFormControlInput1" value="<%= data[0].first_name %>">
+        <label for="exampleFormControlInput1">Last Name</label>
+        <input name="last_name" type="text" class="form-control" id="exampleFormControlInput1" value="<%= data[0].last_name %>">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input name="email" type="email" class="form-control" id="exampleFormControlInput1" value="<%= data[0].email %>">
+        <label for="exampleFormControlInput1">Gender</label>
+        <input name="gender" type="text" class="form-control" id="exampleFormControlInput1" value="<%= data[0].gender %>">
+        <label for="exampleFormControlInput1">Birthdate</label>
+        <input name="birth_date" type="text" class="form-control" id="exampleFormControlInput1" value="<%= data[0].birth_date %>">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Student</button>
+    </form>
+  </div>
+</body>
+</html>

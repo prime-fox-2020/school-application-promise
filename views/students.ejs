@@ -1,0 +1,42 @@
+<%- include('./partials/top')%>
+    <form class="form-inline my-2 my-lg-0">
+      <a href="/students/add" class="btn btn-outline-success my-2 my-sm-0" type="submit">Add New Student</a>
+    </form>
+    
+   
+
+  </nav>
+  <div class="jumbotron">
+    <% if (data.length) { %>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Birthdate</th>
+        <th scope="col">ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(el => { %>
+        <tr>
+          <th scope="row"><%= el.id %></th>
+          <td><%= el.first_name %></td>
+          <td><%= el.last_name %></td>
+          <td><%= el.email %></td>
+          <td><%= el.gender %></td>
+          <td><%= el.birth_date %></td>
+          <td><a href="/students/<%= el.id %>/edit" type="button" class="btn btn-primary btn-sm">Edit</a>
+            <a href="/students/<%= el.id %>/delete" type="button" class="btn btn-danger btn-sm">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } %>
+  </div>
+</body>
+</html>
