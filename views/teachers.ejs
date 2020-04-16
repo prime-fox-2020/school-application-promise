@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <%- include('partials/bootstrap') %>
+        <title>Teachers</title>
+    </head>
+    <body>
+        <%- include('partials/navbar') %> 
+        
+        <h1 style="text-align: center;">Data Teachers</h1>
+        <table class="table table-sm">
+            <thead class="table-info">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First_name</th>
+                <th scope="col">Last_name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i=0; i<data.length; i++) { %>
+              <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].first_name %></td>
+                    <td><%= data[i].last_name %></td>
+                    <td><%= data[i].email %></td>
+                    <td><%= data[i].gender %></td>
+              </tr>
+            </tbody>
+            <% } %>
+          </table>
+    </body>
+</html>

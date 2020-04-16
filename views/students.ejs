@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <%- include('partials/bootstrap') %>
+        <title>Students</title>
+    </head>
+    <body>
+        <%- include('partials/navbar') %> 
+        
+        <h1 style="text-align: center;">Data Students</h1>
+        <p style="text-align: center;"><a href="/students/add">Add student</a></p>
+        <table class="table table-sm">
+            <thead class="table-info">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First_name</th>
+                <th scope="col">Last_name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Birth_date</th>
+                <th scope="col">Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i=0; i<data.length; i++) { %>
+              <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].first_name %></td>
+                    <td><%= data[i].last_name %></td>
+                    <td><%= data[i].email %></td>
+                    <td><%= data[i].gender %></td>
+                    <td><%= data[i].birth_date %></td>
+                    <td>
+                        <button ><a href="/students/<%= data[i].id %>/edit" >Edit</a></button> || 
+                        <button><a href="/students/<%= data[i].id %>/delete">Delete</a></button>
+                    </td>
+              </tr>
+            </tbody>
+            <% } %>
+          </table>
+    </body>
+</html>

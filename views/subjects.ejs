@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <%- include('partials/bootstrap') %>
+        <title>Subjects</title>
+    </head>
+    <body>
+        <%- include('partials/navbar') %> 
+        
+        <h1 style="text-align: center;">Data Subjects</h1>
+        <table class="table table-sm">
+            <thead class="table-info">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Subject_name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i=0; i<data.length; i++) { %>
+              <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].subject_name%></td>
+              </tr>
+            </tbody>
+            <% } %>
+          </table>
+    </body>
+</html>

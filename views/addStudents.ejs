@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('partials/bootstrap') %>
+        <title>Add Students Data</title>
+    </head>
+    <body style="position: center;"> 
+      <%- include('partials/navbar') %> 
+        <h1 style="text-align: center;">Add Students Data</h1>
+        <p style="text-align: center;"><a href="/students">show all data</a></p>
+        <% if (error) { %>
+          <p style="color: red;"><%= error %></p>
+        <% } %>
+        
+
+        <form action='/students/add' method = 'POST'>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label >First Name :</label>
+                <input type="text" class="form-control" name="first_name" placeholder="First Name">
+              </div>
+              <div class="form-group col-md-6">
+                <label >Last Name :</label>
+                <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label >Email :</label>
+              <input type="text" class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class= "form-check">
+                <label>Gender :</label> <br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+            </div>
+            <div class="form-group col-md-6">
+                <label >Birth-Date :</label>
+                <input type="text" class="form-control" name="birth_date" placeholder="YYYY-MM-DD">
+              </div>
+            <button type="submit" name = "submit"class="btn btn-primary mb-2" >Add Students</button>
+          </form>
+    </body>
+    <foot>
+
+    </foot>
+</html>
+
+

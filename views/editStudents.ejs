@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('partials/bootstrap') %>
+        <title>Add Students Data</title>
+    </head>
+    <body style="position: center;"> 
+        <%- include('partials/navbar') %> 
+        <h1 style="text-align: center;">Edit Data Students</h1>
+        <p style="text-align: center;"><a href="/students">show all data</a></p>
+        <form action="/students/<%=data.id%>/edit" method = 'POST'>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label >First Name :</label>
+                <input type="text" class="form-control" name="first_name" placeholder="First Name" value="<%=data.first_name%>">
+              </div>
+              <div class="form-group col-md-6">
+                <label >Last Name :</label>
+                <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="<%=data.last_name%>">
+              </div>
+            </div>
+            <div class="form-group">
+              <label >Email :</label>
+              <input type="email" class="form-control" name="email" placeholder="Email" value="<%=data.email%>">
+            </div>
+            <div class= "form-check">
+                <label>Gender :</label> <br>
+                <input type="radio" id="male" name="gender" value="male" value="<%=data.gender%>">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female" value="<%=data.gender%>">
+                <label for="female">Female</label><br>
+            </div>
+            <div class="form-group col-md-6">
+                <label >Birth-Date :</label>
+                <input type="text" class="form-control" name="birth_date" placeholder="Birth-Date" value="<%=data.birth_date%>">
+              </div>
+            <button type="submit" name = "submit"class="btn btn-primary mb-2" >Edit Students</button>
+          </form>
+    </body>
+    <foot>
+
+    </foot>
+</html>
+
+
