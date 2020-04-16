@@ -28,26 +28,19 @@ const querySubjects = `
   )
 `
 
-pool.query(queryStudents, err =>{
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(`sukses membuat table students`)
-    pool.query(queryTeachers, (err, res) =>{
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(`sukses membuat table teachers`)
-        pool.query(querySubjects, (err, res) =>{
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(`sukses membuat table subjects`)
-            pool.end()
-          }
-        })
-      }
-    })
-  }
+pool.query(queryStudents)
+.then(()=>{
+  console.log(`sukses membuat table students`);
+  return pool.query(queryTeachers)
 })
-
+.then(()=>{
+  console.log(`sukses membuat table teachers`);
+  return pool.query(querySubjects)
+})
+.then(()=>{
+  console.log(`sukses membuat table subjects`);
+  pool.end()
+})
+.catch(err=>{
+  console.log(err);
+})
