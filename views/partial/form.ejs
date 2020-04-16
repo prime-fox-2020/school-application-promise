@@ -1,0 +1,37 @@
+
+    <label>First Name :</label>
+    <input type="text" name="first_name" placeholder="first_name" 
+    <% if(type=="Edit"){ %>
+        value="<%= data.first_name%>" 
+    <% } %> 
+    autofocus><br />
+    <label>Last Name :</label>
+    <input type="text" name="last_name" placeholder="last_name"
+    <% if(type=="Edit"){ %>
+        value="<%= data.last_name%>"
+    <% } %> 
+       ><br>
+    <label>Email :</label>
+    <input type="text" name="email" placeholder="email"
+    <% if(type=="Edit"){ %>
+        value="<%= data.email%>" 
+    <% } %> 
+    ><br>
+    <label>Gender :</label>
+    <select name="gender">
+    <% if(type==="Edit"){ %>
+        <option value="male" <%= data.gender === "male" ? "selected" : "" %>> Male</option>
+        <option value="female" <%= data.gender === "female" ? "selected" : "" %>>Female</option>
+    <% } %> 
+    <% if (type == "Add") {%>
+        <option value="" selected disabled>Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    <% }%>
+    </select> <br>
+    <label>Birth Date :</label>
+    <input type="text" name="birth_date" placeholder="DD-MM-YYYY" 
+    <% if(type=="Edit"){ %>
+        value="<%= data.birth_date%>"
+    <% } %> ><br>
+    

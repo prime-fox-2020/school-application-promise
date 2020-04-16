@@ -1,0 +1,33 @@
+
+<%- include('partial/header', { title: "Student Page", header: "Student List"} );%>
+    <!---------->
+    <a href="/" role="button"> Back To Homepage</a>
+    <a href="/student/add" role="button">ADD New Student</a>
+
+    <% if (data.length) { %>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Birth Date</th>
+                <th colspan="2">Option</th>
+            </tr>
+            <% data.forEach(item => { %>
+                <tr>
+                    <td><%= item.id%></td>
+                    <td><%= item.first_name%></td>
+                    <td><%= item.last_name%></td>
+                    <td><%= item.email%></td>
+                    <td><%= item.gender%></td>
+                    <td><%= item.birth_date%></td>
+                    <td><a href="/student/<%= item.id%>/edit" role="button">EDIT</a></td>
+                    <td><a href="/student/<%= item.id%>/delete" role="button">DELETE</a></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } %>
+</body>
+</html>

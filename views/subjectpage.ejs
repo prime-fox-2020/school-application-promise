@@ -1,0 +1,21 @@
+
+<%- include('partial/header', { title: "Subject Page", header: "Subject List"} );%>
+    <!---------->
+    <a href="/" role="button">Back to Homepage</a>
+
+    <% if(data.length) { %>
+        <table border="1">
+            <tr>
+                <td>ID</td>
+                <td>Nama Subject</td>
+            </tr>
+            <% data.forEach(item => { %>
+                <tr>
+                    <td><%= item.id%></td>
+                    <td><%= item.subject_name %></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } %>
+</body>
+</html>
