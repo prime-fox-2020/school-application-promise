@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('./partials/head.ejs')  %>
+
+<body>
+    <%- include('./partials/navbar.ejs')  %>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="d-flex justify-content-center mt--3">
+            <div class="card text-left" style="width : 30rem;">
+                <div class="card-head bg-primary p-4">
+                    <h1 class="text-white">Form Update Student</h1>
+                </div>
+                <% if (student) { %>
+                <form class="card-body" action="/students/<%= student.id %>/edit" method="POST">
+                    <h4 class="card-title text-primary-light ">Update student</h4>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">First Name</label>
+                        <input type="text" class="form-control" value="<%= student.first_name %>" name="first_name">
+                        <% if (error.first_name) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.first_name %>
+                        </small>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Last Name</label>
+                        <input type="text" class="form-control" value="<%= student.last_name %>" name="last_name">
+                        <% if (error.last_name) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.last_name %>
+                        </small>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Email</label>
+                        <input type="email" class="form-control" value="<%= student.email %>" name="email">
+                        <% if (error.email) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.email %>
+                        </small>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Gender</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="gender">
+                            <option disabled value="null">-- Choose Gender --</option>
+                            <option value="male" <% student.gender == 'male'? 'selected':'' %>>Male</option>
+                            <option value="female" <%= student.gender == 'female'? 'selected':'' %>>Female</option>
+                            <% if (error.gender) { %>
+                            <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.gender %>
+                            </small>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Birth Date</label>
+                        <input type="text" class="form-control"
+                            value="<%= student.birth_date.toISOString().slice(0,10) %>" name="birth_date">
+                        <% if (error.birth_date) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.birth_date %>
+                        </small>
+                        <% } %>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Update Student</button>
+                    <% } %>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <% include ('./partials/script.ejs') %>
+</body>
+
+</html>

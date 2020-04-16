@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('./partials/head.ejs')  %>
+
+<body>
+    <%- include('./partials/navbar.ejs')  %>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="mb-4">
+                <a href="/students/add" class="float-right">
+                    <button class="btn btn-primary">Add Subject</button>
+                </a>
+                <h1>List Subjects</h1>
+            </div>
+
+            <div class="card p-4 bg-dark">
+                <table class="table p-4">
+                    <thead class="thead-dark ml-4">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Subject Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <% if (subjects) { %>
+                    <tbody class="alert-warning">
+                        <% subjects.forEach(el => { %>
+                        <tr>
+                            <th scope="row"><%= el.id %></th>
+                            <td><%= el.subject_name %></td>
+                            <td>
+                                <a href="/students/<%= el.id %>/edit"><button
+                                        class="btn btn-outline-secondary">Edit</button></a>
+                                <a href="/students/<%= el.id %>/delete"><button
+                                        class="btn btn-danger">Delete</button></a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+   <% include ('./partials/script.ejs') %> 
+</body>
+
+</html>

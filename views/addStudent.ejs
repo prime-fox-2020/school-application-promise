@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('./partials/head.ejs')  %>
+
+<body>
+    <%- include('./partials/navbar.ejs')  %>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="d-flex justify-content-center mt--3">
+            <div class="card text-left" style="width : 30rem;">
+                <div class="card-head bg-primary p-4">
+                    <h1 class="text-white">Form Add Student</h1>
+                </div>
+                <form class="card-body" action="/students/add" method="POST">
+                    <h4 class="card-title text-primary-light ">Creat new student</h4>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">First Name</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Jhone"
+                            name="first_name">
+                        <% if (error.first_name) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.first_name %>
+                        </small>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Last Name</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Doe"
+                            name="last_name">
+                        <% if (error.last_name) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.last_name %>
+                        </small>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Email</label>
+                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Jhone@mail.com"
+                            name="email">
+                            <% if (error.email) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.email %> </small>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Gender</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="gender">
+                            <option selected value="null">-- Choose Gender --</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <% if (error.gender) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.gender %> </small>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Birth Date</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="2020-04-15"
+                            name="birth_date">
+                        <% if (error.birth_date) { %>
+                        <small id="emailHelp" class="form-text text-danger alert-warning p-2"><%= error.birth_date %>
+                        </small>
+                        <% } %>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add Student</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <%- include('./partials/navbar.ejs')  %>
+</body>
+
+</html>
