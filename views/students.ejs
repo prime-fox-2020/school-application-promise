@@ -1,0 +1,44 @@
+<%- include ('./partials/headerTable.ejs',{title: 'Students List'}) %>
+<body>
+    <h1>Students List</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>email</th>
+            <th>gender</th>
+            <th colspan="2">birthdate</th>
+        </tr>
+    <% for(let a = 0; a < data.length; a++){%>
+        <% if(data[a].email == email){ %>
+            <tr>
+                <td><%= data[a].id %></td>
+                <td><%= data[a].first_name %></td>
+                <td><%= data[a].last_name %></td>
+                <td><%= data[a].email %></td>
+                <td><%= data[a].gender %></td>
+                <td><%= data[a].birthdate %></td>
+                <td><a href="/students/<%=data[a].id%>/edit">Edit</a></td>
+                <td><a href="/students/<%=data[a].id%>/delete">Delete</a></td>
+            </tr>
+        <% } else if(email === undefined){ %>
+            <tr>
+                <td><%= data[a].id %></td>
+                <td><%= data[a].first_name %></td>
+                <td><%= data[a].last_name %></td>
+                <td><%= data[a].email %></td>
+                <td><%= data[a].gender %></td>
+                <td><%= data[a].birthdate %></td>
+                <td><a href="/students/<%=data[a].id%>/edit">Edit</a></td>
+                <td><a href="/students/<%=data[a].id%>/delete">Delete</a></td>
+            </tr>
+        <% }%>
+    <% }%>
+    </table>
+
+    <a href="/students/add">Add New Student</a>
+    <a href="/">Halaman Utama</a>
+    
+</body>
+</html>

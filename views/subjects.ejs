@@ -1,0 +1,26 @@
+<%- include ('./partials/headerTable.ejs',{title: 'Subjects List'}) %>
+<body>
+    <h1>Subject List</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>subject_name</th>
+        </tr>
+    <% for(let a = 0; a < data.length; a++){%>
+        <% if(data[a].id == id){ %>
+            <tr>
+                <td><%= data[a].id %></td>
+                <td><%= data[a].subject_name %></td>
+            </tr>
+        <% } else if(id === undefined){ %>
+            <tr>
+                <td><%= data[a].id %></td>
+                <td><%= data[a].subject_name %></td>
+            </tr>
+        <% }%>
+    <% }%>
+    </table>
+    <a href="/">Halaman Utama</a>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<%- include ('./partials/headerTable.ejs',{title: 'Teachers List'}) %>
+<body>
+    <h1>Teachers List</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>email</th>
+            <th>gender</th>
+        </tr>
+    <% for(let a = 0; a < data.length; a++){%>
+        <tr>
+            <td><%= data[a].id %></td>
+            <td><%= data[a].first_name %></td>
+            <td><%= data[a].last_name %></td>
+            <td><%= data[a].email %></td>
+            <td><%= data[a].gender %></td>
+        </tr>
+    <% }%>
+    </table>
+    <a href="/">Halaman Utama</a>
+    
+</body>
+</html>

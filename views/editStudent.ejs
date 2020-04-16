@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>EDIT STUDENT</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    
+    <%let id = ''%>
+    <%let fname = ''%>
+    <%let lname = ''%>
+    <%let email = ''%>
+    <%let birthdate = ''%>
+    <% id = data[0].id %>
+    <% fname = data[0].first_name %>
+    <% lname = data[0].last_name %>
+    <% email = data[0].email %>
+    <% birthdate = data[0].birthdate%>
+
+    <h1>Edit Student</h1>
+    <form action="/students/<%=id%>/edit" method="POST">
+        <input type="text" name="fname" placeholder="Nama Depan" value="<%= fname %>" required><br>
+        <input type="text" name="lname" placeholder="Nama Belakang" value="<%= lname %>" required><br>
+        <input type="text" name="email" placeholder="Email" value="<%= email %>" required><br>
+        <select name="gender" required>
+            <option value="" disabled selected>--select your gender--</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select><br>
+        <input type="text" name="birthdate" placeholder="Birtdate dd/mm/yy" value="<%= birthdate %>" required><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
