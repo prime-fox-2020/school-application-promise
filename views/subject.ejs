@@ -1,0 +1,21 @@
+<%- include('partials/header', { title: 'Subject List'}) %>
+        <a class="btn btn-primary btn-lg" href="/" role="button">Go back to Home Page</a>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Subject Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% object.forEach(item => { %>
+          <tr>
+            <th scope="row"><%= item.id %></th>
+            <td><%= item.subject_name %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <%- include('partials/footer') %>
