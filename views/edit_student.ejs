@@ -1,0 +1,13 @@
+<%- include ('./partials/header', {title: 'Edit Student Data'}) %>
+    <form action="/students/<%=paramId%>/edit" method="POST" >
+        <p>First Name</p><br>
+        <input type="text" name="firstname" value="<%= populatedStudent[0].first_name %>" autofocus><br>
+        <p>Last Name</p><br>
+        <input type="text" name="lastname" value="<%= populatedStudent[0].last_name %>"><br>
+        <p>Email</p><br>
+        <input type="email" name="email" value="<%= populatedStudent[0].email %>"><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

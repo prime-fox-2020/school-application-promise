@@ -1,0 +1,15 @@
+<%- include ('./partials/header', {title: 'List of Subjects'}) %>
+    <table>
+        <tr>
+            <td>id</td>
+            <td>Subject Name</td>
+        </tr>
+        <% for (let i = 0; i< data.length; i++) { %>
+            <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].subject_name %></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

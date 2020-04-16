@@ -1,0 +1,16 @@
+<%- include ('./partials/header', {title: 'Add New Student'}) %>
+    <form action="/students/add_student" method="POST" class="input">
+        <input type="text" name="firstname" placeholder="First Name" autofocus><br>
+        <input type="text" name="lastname" placeholder="Last Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <select name="gender">
+            <option value="">-Pilih Gender-</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select><br>
+        <input type="text" name="birth_date" placeholder="Input 'YYYY-MM-DD'" required><br>
+
+        <button type="submit" class="input">Submit</button>
+    </form>
+</body>
+</html>
