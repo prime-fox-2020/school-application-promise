@@ -1,0 +1,34 @@
+<%- include('./partials/header', {title: "Subject list"}); %>
+    <br>
+    <div class="container">
+        <% if(msg) { %>
+            <br><div class="alert alert-success text-center role="alert">
+                <%= msg %>
+            </div>
+        <% } %>
+
+        <% if (subjectList.length >0) { %>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <% const keys = Object.keys(subjectList[0]) %>
+                    <% for (let key of keys) { %>
+                        <th scope="col"><%= key %></th>
+                    <% } %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let subject of subjectList) { %>
+                    <tr>
+                        <% const values = Object.values(subject) %>
+                        <% for (let data of values) { %>
+                        <td><%= data %></td>
+                        <% } %>
+                    </tr>
+                    <% } %> 
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+
+<%- include('./partials/footer'); %>

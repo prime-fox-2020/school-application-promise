@@ -1,0 +1,10 @@
+<%- include('./partials/header', {title: "Error!"}); %>
+
+    <% if (msg) { %>
+    <h1 class="text-center"><%= msg %></h1>
+    <% } %>
+    <div class="navbar form-inline">
+        <button onclick="location.href = '/';" class="btn btn-outline-success mx-auto" type="button">Go to home page</button>
+    </div>
+
+<%- include('./partials/footer'); %>

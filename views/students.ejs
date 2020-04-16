@@ -1,0 +1,42 @@
+<%- include('./partials/header', {title: "Student list"}); %>
+
+    <br>
+    <button onclick="location.href = '/students/add';" class="btn btn-outline-success navbar mx-auto" type="button">Add students</button>
+    
+    <% if(msg) { %>
+        <br><div class="alert alert-success text-center role="alert">
+            <%= msg %>
+        </div>
+    <% } %>
+
+    <div class="container">
+        <% if (studentList.length >0) { %>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <% const keys = Object.keys(studentList[0]) %>
+                    <% for (let key of keys) { %>
+                        <th scope="col"><%= key %></th>
+                    <% } %>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let [i, student] of studentList.entries()) { %>
+                    <tr>
+                        <% const values = Object.values(student) %>
+                        <% for (let data of values) { %>
+                        <td><%= data %></td>
+                        <% } %>
+                        <td>
+                            <a href="/students/edit/<%=student.id%>" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
+                            <a href="/students/delete/<%=student.id%>" class="btn btn-warning" role="button" aria-pressed="true">delete</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+
+<%- include('./partials/footer'); %>

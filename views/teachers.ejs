@@ -1,0 +1,36 @@
+<%- include('./partials/header', {title: "Teacher list"}); %>
+
+    <br>
+    <div class="container">
+        
+        <% if(msg) { %>
+            <br><div class="alert alert-success text-center role="alert">
+                <%= msg %>
+            </div>
+        <% } %>
+
+        <% if (teacherList.length >0) { %>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <% const keys = Object.keys(teacherList[0]) %>
+                    <% for (let key of keys) { %>
+                        <th scope="col"><%= key %></th>
+                    <% } %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let teacher of teacherList) { %>
+                    <tr>
+                        <% const values = Object.values(teacher) %>
+                        <% for (let data of values) { %>
+                        <td><%= data %></td>
+                        <% } %>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+
+<%- include('./partials/footer'); %>
