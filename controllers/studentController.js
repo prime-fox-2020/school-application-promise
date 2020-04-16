@@ -22,7 +22,12 @@ class StudentController{
             })
             .catch(err => {
                 let errorMsg = [];
-                let date = req.body.birth_date.split('-');
+
+                if(!req.body.birth_date.includes('-')){
+                    errorMsg.push('You should use date format (YYYY-MM-DD)');
+                }
+
+                let date = req.body.birth_date.split('-').map(el => Number(el));
 
                 if(req.body.first_name === ''){
                     errorMsg.push('First Name is Empty!');
@@ -82,7 +87,12 @@ class StudentController{
             })
             .catch(err => {
                 let errorMsg = [];
-                let date = req.body.birth_date.split('-');
+
+                if(!req.body.birth_date.includes('-')){
+                    errorMsg.push('You should use date format (YYYY-MM-DD)');
+                }
+
+                let date = req.body.birth_date.split('-').map(el => Number(el));
 
                 if(req.body.first_name === ''){
                     errorMsg.push('First Name is Empty!');
