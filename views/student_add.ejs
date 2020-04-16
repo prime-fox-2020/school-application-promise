@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('partial/bootstrap') %> 
+    <title>Add Student</title>
+</head>
+<body>
+    <h1>Add Student</h1>
+    <% if (error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %> 
+        </div>
+    <% } %>
+    <form action="add" method="post">
+        <label for="first_name">First Name</label> <br>
+        <input type="text" name="first_name" id="first_name" placeholder="Input Your First Name Here..."> <br> <br>
+
+        <label for="last_name">Last Name</label> <br>
+        <input type="text" name="last_name" id="last_name" placeholder="Input Your Last Name Here..."> <br> <br>
+
+        <label for="email">Email</label> <br>
+        <input type="text" name="email" id="email" placeholder="Input Your Email Here"> <br> <br>
+        
+        <label for="male">Gender</label> <br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br> <br>
+
+        <label for="birth_date">Birth Date</label> <br>
+        <input type="text" name="birth_date" id="birth_date" placeholder="YYYY-MM-DD"> <br>
+        <br>
+        <button type="submit">ADD</button>
+    </form>
+</body>
+</html>

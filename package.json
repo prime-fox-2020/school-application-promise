@@ -1,0 +1,27 @@
+{
+  "name": "school-application-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prime-fox-2020/school-application-express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prime-fox-2020/school-application-express/issues"
+  },
+  "homepage": "https://github.com/prime-fox-2020/school-application-express#readme",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3",
+    "pg": "^8.0.2"
+  },
+  "devDependencies": {}
+}

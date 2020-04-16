@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('partial/bootstrap') %> 
+    <title>Edit Student</title>
+</head>
+<body>
+    <h1>Edit Student</h1>
+    <% if (error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %> 
+        </div>
+    <% } %>
+    <form action="edit" method="post">
+        <h3>First Name</h3> 
+        <input type="text" name="first_name" value="<%= el.first_name %>"> 
+
+        <h3>Last Name</h3> 
+        <input type="text" name="last_name" value="<%= el.last_name %>">
+
+        <h3>Email</h3> 
+        <input type="text" name="email" value="<%= el.email %>">
+        
+        <h3>Gender</h3>
+        <input type="radio" id="male" name="gender" value="male" <%= el.gender === 'male' ? 'checked' : '' %>>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female" <%= el.gender === 'female' ? 'checked' : '' %>>
+        <label for="female">Female</label><br>
+
+        <h3>Birth Date</h3>
+        <input type="text" name="birth_date" value="<%= birth_date %>"> 
+        <br>
+        <button type="submit">EDIT</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('partial/bootstrap') %> 
+    <title>Students</title>
+</head>
+<body>
+    <%- include('partial/navbar') %>
+    <div style="margin: 0 50px 0 50px">
+
+        <h1 style="margin: 25px 450px 25px 450px">Students Data</h1>
+    
+        <% if (message) { %>
+            <div class="alert alert-success" role="alert">
+                <%= message %> 
+            </div>
+        <% } %>
+    
+        <a href="/students/add" type="button" style="margin: 0px 520px 0px 520px">add students</a>
+    
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(el => { %>
+                    <tr>
+                     <th scope="row"><%= el.id %> </th>
+                     <td><%= el.first_name %> </td>
+                     <td><%= el.last_name %> </td>
+                     <td><%= el.email %> </td>
+                     <td>
+                        <form action="students/<%= el.id %>/edit" method="get">
+                            <button type="submit" class="btn btn-light">EDIT</button>
+                        </form>
+                        <form action="students/<%= el.id %>/delete" method="get">
+                            <button type="submit" class="btn btn-dark">DELETE</button>
+                        </form>
+                     </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+          </table>
+    </div> 
+</body>
+</html>
