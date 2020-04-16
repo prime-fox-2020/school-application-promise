@@ -1,75 +1,48 @@
-const fs = require('fs');
+const fsPromises = require('fs').promises;
 const db = require('./config/connection');
-const promise = [];
 
-fs.readFile('./data/students.json', 'utf8', (err, data) => {
-    if (err) console.log(err);
-    else {
-        data = JSON.parse(data);
-        for (let [i, entry] of data.entries()) {
-            data[i] = Object.values(entry);
-            data[i].shift();
-            for (let [j, value] of data[i].entries()) {
-                if (isNaN(+value)) data[i][j] = `'${value}'`;
-            }
-            data[i] = `(${data[i].join(', ')})`;
-        }
-        const studentQuery = `INSERT INTO students ("first_name", "last_name", "email", "gender", "birth_date") VALUES ${data.join(', ')}`;
-        db.query(studentQuery, (err) => {
-            if (err) console.log(err);
-            else {
-                console.log("Insert data to students table succes");
-                promise.push(true);
-                if (promise.length == 3) db.end();
-            }
-        })
-    }
-});
+const studentsQuery = 'INSERT INTO students ("first_name", "last_name", "email", "gender", "birth_date") VALUES ';
+const teachersQuery = 'INSERT INTO teachers ("first_name", "last_name", "email", "gender") VALUES ';
+const subjectsQuery = 'INSERT INTO subjects ("subject_name") VALUES ';
 
-fs.readFile('./data/teachers.json', 'utf8', (err, data) => {
-    if (err) console.log(err);
-    else {
-        data = JSON.parse(data);
-        for (let [i, entry] of data.entries()) {
-            data[i] = Object.values(entry);
-            data[i].shift();
-            for (let [j, value] of data[i].entries()) {
-                if (isNaN(+value)) data[i][j] = `'${data[i][j]}'`;
-            }
-            data[i] = `(${data[i].join(', ')})`;
-        }
-        const teacherQuery = `INSERT INTO teachers ("first_name", "last_name", "email", "gender") VALUES ${data.join(', ')}`;
-        db.query(teacherQuery, (err) => {
-            if (err) console.log(err);
-            else {
-                console.log("Insert data to students table succes");
-                promise.push(true);
-                if (promise.length == 3) db.end();
-            }
+function insertData(path, query) {
+    return new Promise((resolve, reject) => {
+        fsPromises.readFile(path, 'utf8')
+        .catch(err => {
+            console.log(`\nFailed to read data from ${path}`);
+            reject(err.stack);
         })
-    }
-});
+        .then(data => {
+            const insertQuery = makeQuery(query, JSON.parse(data));
+            db.query(insertQuery)
+            .then(data => {
+                console.log(`\nData from ${path} successfuly added to table`);
+                resolve(data);
+            })
+            .catch(err => {
+                console.log(`\nFailed to add data from ${path}`);
+                reject(err.stack);
+            });
+        });
+    })
+}
 
-fs.readFile('./data/subjects.json', 'utf8', (err, data) => {
-    if (err) console.log(err);
-    else {
-        data = JSON.parse(data);
-        for (let [i, entry] of data.entries()) {
-            data[i] = Object.values(entry);
-            data[i].shift();
-            for (let [j, value] of data[i].entries()) {
-                if (isNaN(+value)) data[i][j] = `'${data[i][j]}'`;
-            }
-            data[i] = `(${data[i].join(', ')})`;
+function makeQuery(query, data) {
+    for (let [i, entry] of data.entries()) {
+        data[i] = Object.values(entry);
+        data[i].shift();
+        for (let [j, value] of data[i].entries()) {
+            if (isNaN(+value)) data[i][j] = `'${value}'`;
         }
-        const subjectQuery = `INSERT INTO subjects ("subject_name") VALUES ${data.join(', ')}`;
-        db.query(subjectQuery, (err) => {
-            if (err) console.log(err);
-            else {
-                console.log("Insert data to students table succes");
-                promise.push(true);
-                if (promise.length == 3) db.end();
-            }
-        })
+        data[i] = `(${data[i].join(', ')})`;
     }
-});
+    return query + data.join(', ');
+}
+
+insertData('./data/students.json', studentsQuery)
+.catch(err => console.log(err))
+.then(data => insertData('./data/teachers.json', teachersQuery))
+.catch(err => console.log(err))
+.then(data => insertData('./data/subjects.json', subjectsQuery))
+.catch(err => console.log(err))
+.then(() => db.end());

@@ -1,42 +1,39 @@
 const db = require('./config/connection');
-const promise = [];
 
-const stundentQuery = `CREATE TABLE students ("id" SERIAL PRIMARY KEY, 
+const students = `CREATE TABLE students ("id" SERIAL PRIMARY KEY, 
 "first_name" VARCHAR(20) NOT NULL, 
 "last_name" VARCHAR(40) NOT NULL, 
 "email" VARCHAR(50) NOT NULL, 
 "gender" VARCHAR(10) NOT NULL,
 "birth_date" VARCHAR(20) NOT NULL)`;
-db.query(stundentQuery, (err) => {
-    if (err) console.log(err);
-    else {
-        console.log("Create students table success");
-        promise.push(true);
-        if (promise.length == 3) db.end();
-    }
-});
 
-const teacherQuery = `CREATE TABLE teachers ("id" SERIAL PRIMARY KEY, 
+const teachers = `CREATE TABLE teachers ("id" SERIAL PRIMARY KEY, 
 "first_name" VARCHAR(20) NOT NULL, 
 "last_name" VARCHAR(40) NOT NULL, 
 "email" VARCHAR(50) NOT NULL, 
 "gender" VARCHAR(10) NOT NULL)`;
-db.query(teacherQuery, (err) => {
-    if (err) console.log(err);
-    else {
-        console.log("Create teachers table success");
-        promise.push(true);
-        if (promise.length == 3) db.end();
-    }
-});
 
-const subjectQuery = `CREATE TABLE subjects ("id" SERIAL PRIMARY KEY, 
+const subjects = `CREATE TABLE subjects ("id" SERIAL PRIMARY KEY, 
 "subject_name" VARCHAR(20) NOT NULL)`;
-db.query(subjectQuery, (err) => {
-    if (err) console.log(err);
-    else {
-        console.log("Create subject table success");
-        promise.push(true);
-        if (promise.length == 3) db.end();
-    }
-});
+
+function makeTable(query) {
+    return new Promise((resolve, reject) => {
+        db.query(query)
+        .then(data => {
+            console.log("\nSuccesfully created table");
+            resolve(data);
+        })
+        .catch(err => {
+            console.log("\nFailed to create table");
+            reject(err);
+        })
+    });
+}
+
+makeTable(students)
+.catch(err => console.log(err.stack))
+.then(data => makeTable(teachers))
+.catch(err => console.log(err.stack))
+.then(data => makeTable(subjects))
+.catch(err => console.log(err.stack))
+.then(() => db.end());

@@ -1,5 +1,4 @@
 'use strict';
-// Buat dulu database dengan nama school dan jalankan setup-seeding.js
 const express = require('express');
 const router = require('./routes');
 
