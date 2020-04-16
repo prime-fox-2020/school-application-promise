@@ -1,0 +1,20 @@
+<%- include('partials/navbar', { title : 'Subjects Data',background: "bg-info", hrefNav1 : '/', nav1 : "Home", hrefNav2 : '/teachers', nav2 : "Teachers", hrefNav3 : "/students", nav3 : "Students"}) %>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr class = "text-center">
+                <th scope="col">ID</th>
+                <th scope="col">Subject</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i = 0; i < subjects.length; i++) { %>
+                <tr class= "text-center">
+                <th scope="row"><%= subjects[i].id %></th>
+                <td><%= subjects[i].subject_name %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>

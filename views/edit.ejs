@@ -1,0 +1,40 @@
+        <%- include('partials/editAdd.ejs', { title : 'Students Data', ea: 'Edit', error: student.error, afterEdit: student.id , valueFirstName : student.first_name , valueLastName : student.last_name , valueEmail : student.email}) %>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Gender</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" 
+                <% if(student.gender == "male"){ %>
+                    value="male" checked>
+                   <% }else{ %>
+                        value = "male">
+                <% } %>
+                <label class="form-check-label" for="exampleRadios1">
+                  Male
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios2"
+                <% if(student.gender == "female"){ %>
+                    value= <%= student.gender %> checked>
+
+                    <% }else{ %>
+                        value = "female">
+                <% } %>
+                <label class="form-check-label" for="exampleRadios2">
+                  Female
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios3" 
+                <% if(student.gender == "other"){ %>
+                    value= <%= student.gender %> checked>
+
+                    <% }else{ %>
+                        value = "other">
+                <% } %>
+                <label class="form-check-label" for="exampleRadios3">
+                  Other
+                </label>
+              </div>
+        </div>
+        <%- include('partials/footerEditAdd.ejs', { birth_date: student.birth_date, submit: "Finish Edit" }) %>

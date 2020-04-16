@@ -1,0 +1,23 @@
+<%- include('partials/editAdd.ejs', { title : 'Students Data',error : error, ea: 'Add', afterEdit : ' ' ,valueFirstName : ' ', valueLastName : ' ', valueEmail : ' '}) %>
+<div class="form-group">
+  <label for="formGroupExampleInput2">Gender</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="male" checked>
+    <label class="form-check-label" for="exampleRadios1">
+      Male
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="female">
+    <label class="form-check-label" for="exampleRadios2">
+      Female
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="exampleRadios3" value="other">
+    <label class="form-check-label" for="exampleRadios3">
+      Other
+    </label>
+  </div>
+</div>
+<%- include('partials/footerEditAdd.ejs', { birth_date : " ", submit : "Add Student"}) %>

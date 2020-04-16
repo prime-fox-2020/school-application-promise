@@ -1,0 +1,98 @@
+[
+   {
+      "id": 1,
+      "first_name": "Joko",
+      "last_name": "Santoso",
+      "email": "jokosantoso@sekolah.id",
+      "gender": "male",
+      "birth_date": "2005-06-28"
+   },
+   {
+      "id": 2,
+      "first_name": "Lukman",
+      "last_name": "Riki",
+      "email": "lukmanriki@sekolah.id",
+      "gender": "male",
+      "birth_date": "2004-04-13"
+   },
+   {
+      "id": 3,
+      "first_name": "Siti",
+      "last_name": "Nurhayati",
+      "email": "sitinurhayati@sekolah.id",
+      "gender": "female",
+      "birth_date": "2005-05-12"
+   },
+   {
+      "id": 4,
+      "first_name": "Rika",
+      "last_name": "Risti",
+      "email": "rikaristi@sekolah.id",
+      "gender": "female",
+      "birth_date": "2005-01-03"
+   },
+   {
+      "id": 5,
+      "first_name": "Joe",
+      "last_name": "Sans",
+      "email": "joesans@sekolah.id",
+      "gender": "male",
+      "birth_date": "2002-02-22"
+   },
+   {
+      "id": 6,
+      "first_name": "Luke",
+      "last_name": "Rik",
+      "email": "lukerik@sekolah.id",
+      "gender": "male",
+      "birth_date": "2004-09-12"
+   },
+   {
+      "id": 7,
+      "first_name": "Sit",
+      "last_name": "Nur",
+      "email": "sitnur@sekolah.id",
+      "gender": "female",
+      "birth_date": "2005-03-25"
+   },
+   {
+      "id": 8,
+      "first_name": "Ika",
+      "last_name": "Rist",
+      "email": "ikarist@sekolah.id",
+      "gender": "female",
+      "birth_date": "2005-08-12"
+   },
+   {
+      "id": 9,
+      "first_name": "Jaka",
+      "last_name": "Anto",
+      "email": "jakaanto@sekolah.id",
+      "gender": "male",
+      "birth_date": "2012-12-05"
+   },
+   {
+      "id": 10,
+      "first_name": "Luan",
+      "last_name": "Rii",
+      "email": "luanrii@sekolah.id",
+      "gender": "male",
+      "birth_date": "2004-10-22"
+   },
+   {
+      "id": 11,
+      "first_name": "Soto",
+      "last_name": "Hayat",
+      "email": "sotohayat@sekolah.id",
+      "gender": "female",
+      "birth_date": "2005-07-12"
+   },
+   {
+      "id": 12,
+      "first_name": "Rak",
+      "last_name": "Rose",
+      "email": "rakrose@sekolah.id",
+      "gender": "female",
+      "birth_date": "1990-01-23"
+   }
+]
