@@ -2,40 +2,81 @@ const pg = require('../config/connection')
 
 class ModelStudents{
     static getStudents(){
-        return pg
-        .query(`SELECT * FROM students ORDER BY id ASC`)
+        return new Promise( (resolve, reject) => {
+            pg.query(`SELECT * FROM students ORDER BY id ASC`)
+            .then( (res) => {
+                resolve(res)
+            })
+            .catch( (err) => {
+                reject(err)
+            })
+        })
     }
 
     static readWithId(id){
-        return pg
-        .query(`SELECT * FROM students WHERE id = ${id}`)
+        return new Promise( (resolve, reject) => {
+            pg.query(`SELECT * FROM students WHERE id = ${id}`)
+            .then( (res) => {
+                resolve(res.rows)
+            })
+            .catch( (err) => {
+                reject(err)
+            })
+        })
     }
 
     static delete(id){
-        return pg
-        .query(`DELETE FROM students WHERE id = ${id}`)
+        return new Promise( (resolve, reject) => {
+            pg.query(`DELETE FROM students WHERE id = ${id}`)
+            .then( (res) => {
+                resolve(res)
+            })
+            .catch( (err) => {
+                reject(err)
+            })
+        })
     }
 
     static update(id, data){
-        const query = `UPDATE students SET first_name = $1, last_name = $2, email = $3, gender = $4, birth_date = $5 WHERE id = $6`
-        const params = [ data.first_name, data.last_name, data.email, data.gender, data.birth_date, id ] 
-        return pg
-        .query(query, params)
+        return new Promise ( (resolve, reject) => {
+            const query = `UPDATE students SET first_name = $1, last_name = $2, email = $3, gender = $4, birth_date = $5 WHERE id = $6`
+            const params = [ data.first_name, data.last_name, data.email, data.gender, data.birth_date, id ] 
+            pg.query(query, params)
+            .then( res => {
+                resolve(res)
+            })
+            .catch( err => {
+                reject(err)
+            })
+        })
     }
 
     static write(data){
-        const query = `INSERT INTO students (first_name, last_name, email, gender, birth_date)
-        VALUES ($1, $2, $3, $4, $5)`
-
-        const params = [ data.first_name, data.last_name, data.email, data.gender, data.birth_date ] 
-
-        return pg
-        .query(query, params)
+        return new Promise( (resolve, reject) => {
+            const query = `INSERT INTO students (first_name, last_name, email, gender, birth_date)
+            VALUES ($1, $2, $3, $4, $5)`
+            const params = [ data.first_name, data.last_name, data.email, data.gender, data.birth_date ] 
+            pg.query(query, params)
+            .then( (res) => {
+                resolve(res)
+            })
+            .catch( (err) => {
+                reject(err)
+            })
+        })
+        
     }
 
     static getPageEmail(email){
-        return pg
-        .query(`SELECT * FROM students WHERE email = '${email}'`)
+        return new Promise( (resolve, reject) => {
+            pg.query(`SELECT * FROM students WHERE email = '${email}'`)
+            .then( res => {
+                resolve(res.rows)
+            })
+            .catch( err => {
+                reject(err)
+            })
+        })
     }
 
     static validate(data){

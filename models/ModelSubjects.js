@@ -1,25 +1,27 @@
 const pg = require('../config/connection')
 
 class ModelSubjects{
-    static getSubjects(callback){
-        pg.query(`SELECT * FROM subjects ORDER BY id ASC`, (err, res) => {
-            if(err){
-                callback(err, null)
-            }
-            else{
-                callback(null, res.rows)
-            }
+    static getSubjects(){
+        return new Promise( (resolve, reject) => {
+            pg.query(`SELECT * FROM subjects ORDER BY id ASC`)
+            .then( res => {
+                resolve(res.rows)
+            })
+            .catch ( err => {
+                reject(err)
+            })
         })
     }
 
-    static getSubjectId(id, callback){
-        pg.query(`SELECT * FROM subjects WHERE id = ${id}`, (err, res) => {
-            if(err){
-                callback(err, null)
-            }
-            else{
-                callback(null, res.rows)
-            }
+    static getSubjectId(id){
+        return new Promise( (resolve, reject) => {
+            pg.query(`SELECT * FROM subjects WHERE id = ${id}`)
+            .then( res => {
+                resolve(res.rows)
+            })
+            .catch ( err => {
+                reject(err)
+            })
         })
     }
    

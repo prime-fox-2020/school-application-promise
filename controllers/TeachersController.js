@@ -2,23 +2,21 @@ const ModelTeachers = require('../models/ModelTeachers')
 
 class TeachersController{
     static getPage(req, res){
-        ModelTeachers.getTeachers( (err, data) => {
-            if(err){
-                res.render('error', {error: err})
-            }
-            else{
-                res.render('teachers', {data})
-            }
+        ModelTeachers.getTeachers()
+        .then( data => {
+            res.render('teachers', {data})
+        })
+        .catch( err => {
+            res.render('error', {error: err})
         })
     }
     static pageWithId(req, res){
-        ModelTeachers.getTeacherId (Number(req.params.id), (err, data) => {
-            if(err){
-                res.render('error', {error: err})
-            }
-            else{
-                res.render('teachers', {data})
-            }
+        ModelTeachers.getTeacherId (Number(req.params.id))
+        .then( data => {
+            res.render('teachers', {data})
+        })
+        .catch ( err => {
+            res.render('error', {error: err})
         })
     }
 }

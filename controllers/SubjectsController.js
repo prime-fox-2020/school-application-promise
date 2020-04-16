@@ -2,24 +2,22 @@ const ModelSubjects = require('../models/ModelSubjects')
 
 class SubjectsController{
     static getPage(req, res){
-        ModelSubjects.getSubjects( (err, data) => {
-            if(err){
-                res.render('error', {error: err})
-            }
-            else{
-                res.render('subjects', {data})
-            }
+        ModelSubjects.getSubjects()
+        .then( data => {
+            res.render('subjects', {data})
+        })
+        .catch( err => {
+            res.render('error', {error: err})
         })
     }
 
     static pageWithId(req, res){
-        ModelSubjects.getSubjectId (Number(req.params.id), (err, data) => {
-            if(err){
-                res.render('error', {error: err})
-            }
-            else{
-                res.render('subjects', {data})
-            }
+        ModelSubjects.getSubjectId(Number(req.params.id))
+        .then( data => {
+            res.render('subjects', {data})
+        })
+        .catch( err => {
+            res.render('error', {error: err})
         })
     }
 }

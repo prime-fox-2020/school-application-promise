@@ -45,8 +45,7 @@ class StudentsController{
     static editPage(req, res){
         const error = req.query
         ModelStudents.readWithId(Number(req.params.id))
-        .then( result => {
-            const data = result.rows
+        .then( data => {
             res.render('edit-student', {data, error})
         })
         .catch( err => {
@@ -72,8 +71,7 @@ class StudentsController{
 
     static pageWithEmail(req, res){
         ModelStudents.getPageEmail(req.params.email)
-        .then( (result) => {
-            const data = result.rows
+        .then( (data) => {
             res.render('students', {data, alert : ''})
         })
         .catch( (err) => {
