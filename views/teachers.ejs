@@ -1,0 +1,31 @@
+<%- include('./partial/header') %>
+<body>
+  <%- include('./partial/navbar') %>
+  <h1 align="center">Teachers Data</h1><br><br><br>
+  <% if (data.length) { %>
+    <table class="table table-sm table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(list => { %>
+        <tr>
+          <td><%= list.id %></td>
+          <td><%= list.first_name %></td>
+          <td><%= list.last_name %></td>
+          <td><%= list.email %></td>
+          <td><%= list.gender %></td>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

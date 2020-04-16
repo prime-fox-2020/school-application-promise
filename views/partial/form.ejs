@@ -1,0 +1,37 @@
+<h1 align="center"><%= name %></h1>
+  <%if (error) {%>
+    <div class="alert alert-dark" role="alert">
+      <%= error %>
+    </div>
+    <%}%>
+      <label for="inputFirstName">First Name</label>
+      <input name="first_name" class="form-control" placeholder="First Name" 
+      <% if(type === 'edit') { %>
+        value="<%= data.first_name %>"
+        <%}%>
+      >
+      <label for="inputLastName">Last Name</label><br>
+      <input name="last_name" class="form-control" placeholder="Last Name" 
+      <% if(type === 'edit') { %>
+        value="<%= data.last_name %>"
+        <%}%>
+      >
+      <label for="inputEmail">Email</label><br>
+      <input name="email" class="form-control" placeholder="example@example.com" 
+      <% if(type === 'edit') { %>
+        value="<%= data.email %>"
+        <%}%>
+      >
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <label for="inputLastName">Gender</label><br>
+      <select name="gender">
+        <option>Male</option>
+        <option>Female</option>
+      </select><br><br>
+      <label for="inputBirthDate">Birth Date</label><br>
+      <input  name="birth_date" class="form-control" id="inputBirthDate" placeholder="YYYY-MM-DD" 
+      <% if(type === 'edit') { %>
+        value="<%= data.birth_date %>"
+        <%}%>
+      ><br>
+    <button type="submit" class="btn btn-primary">Submit</button>

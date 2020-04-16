@@ -1,0 +1,45 @@
+<%- include('./partial/header') %>
+<body>
+  <%- include('./partial/navbar') %>
+  <h1 align="center">Students Data</h1>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="/students/add">Add Students</a>
+    </li>
+  </ul>
+  <% if (alert) { %>
+    <div class="alert alert-<%= alert.type %>" role="alert">
+      <%= alert.message %>
+    </div>
+  <%}%>
+  <% if (data.length) { %>
+    <table class="table table-sm table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Birth Date</th>
+          <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(list => { %>
+        <tr>
+          <td><%= list.id %></td>
+          <td><%= list.first_name %></td>
+          <td><%= list.last_name %></td>
+          <td><%= list.email %></td>
+          <td><%= list.gender %></td>
+          <td><%= list.birth_date %></td>
+          <td><a href="/students/<%=list.id%>/edit">Edit</a> | <a href="/students/<%=list.id%>/delete">Delete</a></td>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

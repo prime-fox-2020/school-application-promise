@@ -1,0 +1,8 @@
+<%- include('./partial/header') %>
+<body>
+  <%- include('./partial/navbar') %>
+  <form action="/students/add" method="POST">
+    <%- include('./partial/form', {name: 'Add Student', type: 'add'}) %>
+  </form>
+</body>
+</html>
