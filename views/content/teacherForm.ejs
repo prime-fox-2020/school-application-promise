@@ -1,0 +1,41 @@
+<% 
+let Object = {}, editing = false;
+
+if (data) {
+    Object = Array.isArray(data) ? data[0] : data;
+    editing = Object.hasOwnProperty('id');
+}
+%>
+
+<div class="container">
+  <h3><% if (data) {%>Edit Teacher <% } else { %>New Teacher<% } %></h3>
+  <%- include('callout/callout.ejs') %>
+  <form action="<%= editing == true ? `/teachers/update?id=${Object.id}` : `/teachers/add` %>" method="POST">
+    <% if (editing) {%>
+      <input type="text" name="id" value="<%= Object.id %>" hidden>
+      <% } %>
+    <div class="form-group">
+      <label for="fname">First Name</label>
+      <input type="text" class="form-control" id="fname" name="first_name" placeholder="Teacher first name.." value="<%= data ? Object.first_name : '' %>">
+    </div>
+
+    <div class="form-group">
+      <label for="lname">Last Name</label>
+      <input type="text" class="form-control" id="lname" name="last_name" placeholder="Teacher last name.." value="<%= data ? Object.last_name : '' %>">
+    </div>
+
+    <div class="form-group">
+      <label for="lname">Email</label>
+      <input type="text" class="form-control" id="email" name="email" placeholder="Teacher email.." value="<%= data ? Object.email : '' %>">
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select class="form-control" id="gender" name="gender">
+        <option value="Male" <% if (data && Object.gender.toLowerCase() == 'male') {%>selected<%}%>>Male</option>
+        <option value="Female" <% if (data && Object.gender.toLowerCase() == 'female') {%>selected<%}%>>Female</option>
+      </select>
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-outline-success">
+  </form>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <%- include('callout/callout.ejs') %>
+  <form action="/subjects/add" method="POST">
+    <div class="form-group">
+      <label for="fname">Subject Name</label>
+      <input type="text" class="form-control" id="sname" name="subject_name" placeholder="Subject name..">
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-outline-success">
+  </form>
+</div>

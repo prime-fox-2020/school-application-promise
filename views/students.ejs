@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<title>School Apps - Showing Students</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<link rel="icon" href="../assets/images/faveicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<%- include('content/navigation/navbar.ejs') %>
+<div class="container">
+  <%- include('content/callout/callout.ejs') %>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Birth Date</th>
+        <th style="text-align: center;">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (data) {data.forEach(el => { %>
+      <tr>
+        <td><%= el.id %></td>
+        <td><%= el.first_name %></td>
+        <td><%= el.last_name %></td>
+        <td><a href="<%= `/students/${el.email}`%>"><%= el.email %></a></td>
+        <td><%= el.gender %></td>
+        <td><%= new Date(el.birth_date).toLocaleString() %></td>
+        <td style="text-align: center;">
+          <a href="/students/edit?id=<%= el.id %>" class="btn btn-outline-info" role="button">Edit</a>
+          <a href="/students/delete?id=<%= el.id %>" class="btn btn-outline-danger" role="button">Delete</a>
+        </td>
+      </tr>
+      <% })} %>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

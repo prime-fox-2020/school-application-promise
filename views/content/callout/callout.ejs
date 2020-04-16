@@ -1,0 +1,23 @@
+    <% if (callout) { 
+        let calloutType = 'success', calloutMessage = '';
+
+        if (!callout.hasOwnProperty('status')) {
+            calloutMessage = `You are successfully ${callout.action} 1 ${activeMenu.substr(0, activeMenu.length-1)}`;
+        }
+        if (callout.detail) {
+            calloutType = 'danger'
+            switch (callout.detail) {
+                case 'invalid_email' : calloutMessage = `Your email address is not a valid email address`; break;
+                case 'invalid_date_format' : calloutMessage = `Date input must in : DD/MM/YYYY Format`
+            }
+        }
+        if (callout.on) {
+            calloutType = 'danger'
+            calloutMessage = `You must fill all requirement field`
+        }
+        
+    %>
+    <div class="alert alert-<%= calloutType %>" role="alert">
+    <%= calloutMessage %>
+    </div>
+    <% } %>
