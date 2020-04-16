@@ -1,0 +1,31 @@
+<%- include('partials/header')%>
+<body>
+
+    <div class="container mt-5">
+    <h1 class="text-center">Subjects Data</h1>
+    <!-- <div class="container-sm"> -->
+    <div class="container mt-5"><a href="/">Home</a></div>
+        <% if(data){ %>
+        <table class="table table-striped  mt-5">
+            <thead>
+            <tr>
+                <% for(let key in data[0]){ %>
+                    <th scope="col"><%= key %></th>    
+                <% } %>
+            </tr>
+            </thead>
+            <tbody>
+            <% data.forEach( key => { %>
+                <tr>
+                    <td><a href="/subjects/<%= key.id %>"><%= key.id %></a></td>
+                    <td><%= key.subject_name %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+        <% } %>
+    <!-- </div> -->
+    </div>
+
+</body>
+</html>

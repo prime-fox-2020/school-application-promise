@@ -1,0 +1,42 @@
+<%- include('partials/header')%>
+<body>
+  <%- include('partials/navbar-students')%>
+
+    <div class="jumbotron">
+      <% if (error){ %>
+        <div class="alert alert-danger text-center" role="alert">
+            <%= error.error %>
+        </div>
+      <% } %>
+      <!-- use form from boots, deltable-->
+      <form action="/students/add" method="post">
+        <!-- bring as stud/add by post--> 
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Firstname:</label><br>
+          <input type="text" name="first_name" placeholder="Your first-name" class="form-control"><br>
+        </div>
+        <div class="form-group">
+          <label for="">Lastname:</label><br>
+          <input type="text" name="last_name" placeholder="Your last-name" class="form-control"><br>
+        </div>
+        <div class="form-group">
+          <label for="">Email:</label><br>
+          <input type="text" name="email" placeholder="Your email" class="form-control"><br>
+        </div>
+        <div class="form-group">
+          <label for="">Select gender:</label><br>
+          <select name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+          </select><br>
+        </div>
+        <div class="form-group">
+          <label for="">Birthdate:</label><br>
+          <input type="text" name="birth_date" placeholder="DD-MM-YYYY" class="form-control"><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    
+</body>
+</html>

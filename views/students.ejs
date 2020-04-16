@@ -1,0 +1,46 @@
+<%- include('partials/header')%>
+<body>
+  <%- include('partials/navbar-students')%>
+  
+    <div class="container mt-5"><a href="/">Home</a></div> <!--back home-->
+    <% if (alert){ %>
+      <div class="alert alert-<%= alert.type %> text-center" role="alert">
+          <%= alert.message %>
+      </div>
+    <% } %>
+    <div class="jumbotron">
+        <% if(data) { %> 
+        <table class="table"> <!-- from boots table-->
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Birthdate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tbody>
+                <% data.forEach( key => { %>
+                  <tr>
+                    <td scope="row"><%= key.id %></td>
+                    <td><%= key.first_name %></td>
+                    <td><%= key.last_name %></td>
+                    <td><%= key.email %></td>
+                    <td><%= key.gender %></td>
+                    <td><%= `${key.birth_date.getDate()}-${key.birth_date.getMonth()+1}-${key.birth_date.getFullYear()}` %></td>
+                    <td>
+                      <a href="/students/<%= key.id %>/edit">Edit</a><br>
+                      <a href="/students/<%= key.id %>/delete">Delete</a>
+                    </td>
+                  </tr>
+                <% }) %>
+            </tbody>
+        </table> <!-- from boots table -->
+        <% } %>
+    </div>
+    
+</body>
+</html>

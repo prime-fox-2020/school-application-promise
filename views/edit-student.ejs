@@ -1,0 +1,41 @@
+<%- include('partials/header')%>
+<body>
+    <div class="jumbotron">
+      <!-- use form from boots, deltable, delgender-->
+      <h1 class="text-center ">Edit Student Data</h1>
+      <% if (error){ %>
+        <div class="alert alert-danger text-center" role="alert">
+            <%= error.error %>
+        </div>
+      <% } %>
+        <form action="/students/<%=data[0].id%>/edit" method="post"> <!--action: stud/id/edit-->
+            <input type="hidden" name="id" value="<%=data[0].id%>"><br> <!--try no need hidden bc udh ada req.params.id-->
+            <div class="form-group">
+                <label for="">Firstname:</label>
+                <input type="text" name="first_name" value="<%=data[0].first_name%>" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Lastname:</label>
+                <input type="text" name="last_name" value="<%=data[0].last_name%>" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Email:</label>
+                <input type="text" name="email" value="<%=data[0].email%>" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Select gender:</label><br>
+                <select name="gender">
+                    <option value="male" <%= data[0].gender = 'male' ? 'selected' : '' %>>Male</option>
+                    <option value="female" <%= data[0].gender = 'female' ? 'selected' : '' %>>Female</option>
+                </select><br>
+            </div>
+            <div class="form-group">
+                <label for="">Birthdate:</label>
+                <input type="text" name="birth_date"  class="form-control" value="<%=`${data[0].birth_date.getDate()}-${data[0].birth_date.getMonth()+1}-${data[0].birth_date.getFullYear()}`%>">
+                
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Changes</button>
+        </form>
+    </div>
+</body>
+</html>
