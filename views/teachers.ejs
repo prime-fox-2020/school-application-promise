@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teachers data</title>
+</head>
+<body>
+    <h1>DATA TEACHERS</h1>
+
+    <form action="/teachers/:email" method="post">
+        <label>Search Teacher By Email:</label><br>
+        <input type="text" name="email"> <br>
+        <button type="submit">Search</button>
+    </form>
+    <br>
+
+    <button><a href="/teachers/add">Add New Teachers</a></button><br><br>
+    <% if(msg) { %>
+        <p><%=msg%></p>
+    <%}%>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>FIRST NAME</td>
+                <td>LAST NAME</td>
+                <td>EMAIL</td>
+                <td>GENDER</td>
+                <td colspan="2">OPTION</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            <%for (let i in dataTeachers) {%>
+                <tr>
+                    <td><%=dataTeachers[i].id%></td>
+                    <td><%=dataTeachers[i].first_name%></td>
+                    <td><%=dataTeachers[i].last_name%></td>
+                    <td><%=dataTeachers[i].email%></td>
+                    <td><%=dataTeachers[i].gender%></td>
+                    <td><button><a href="/teachers/<%=dataTeachers[i].id%>/edit">EDIT</a></button></td>
+                    <td><button><a href="/teachers/<%=dataTeachers[i].id%>/delete">DELETE</a></button></td>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+    <br>
+    <button><a href="/">Back to Home</a></button>
+</body>
+</html>

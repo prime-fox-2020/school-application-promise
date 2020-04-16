@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit student</title>
+</head>
+<body>
+    <h1>Edit Student</h1>
+    
+    <br>
+    <button><a href="/students">Back to Data Students</a></button><br><br>
+    
+    
+    <form action="/students/<%=id%>/edit" method="post">
+        <label>First Name:</label><br> 
+        <input type="text" name="first_name" value="<%=data.first_name%>"><br><br> 
+        
+        <label>Last Name:</label><br> 
+        <input type="text" name="last_name" value="<%=data.last_name%>"><br><br> 
+        
+        <label>Email:</label><br> 
+        <input type="text" name="email" value="<%=data.email%>"><br><br>
+
+        <label>Gender:</label><br> 
+        <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br><br>
+
+        <label>Birth Date: (YYYY-MM-DD)</label><br> 
+        <input type="text" name="birth_date" value="<%=data.birth_date.toISOString()%>"><br><br> 
+         
+        <button type="submit">Edit</button>
+    </form>
+</body>
+</html>

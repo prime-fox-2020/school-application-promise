@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add new teacher</title>
+</head>
+<body>
+    <h1>Add New Teacher</h1>
+    <button><a href="/teachers">Back to Data Teachers</a></button><br><br>
+    <form action="/teachers/add" method="post">
+        <% if (error == 'First Name harus diisi') {%>
+            <p><%= error %></p>
+        <%}%>
+
+        <%- include('partials/label-dan-input-first-name') %><br><br>  
+        
+
+        <% if (error == 'Last Name harus diisi') {%>
+            <p><%= error%></p>
+        <%}%>
+
+        <%- include('partials/label-dan-input-last-name') %><br><br>  
+        
+        <% if (error == 'Email harus diisi') { %>
+            <p><%= error %></p>
+        <%} else if (error == 'Email harus ada character @') { %>
+            <p><%= error %></p>
+        <%}%>
+
+        <%- include('partials/label-dan-input-email') %><br><br>  
+
+        <%- include('partials/label-dan-input-gender') %><br><br>
+
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>students data</title>
+</head>
+<body>
+    <h1>DATA STUDENTS</h1>
+
+    <form action="/students/:email" method="post">
+        <label>Search Student By Email:</label><br>
+        <input type="text" name="email"> <br>
+        <button type="submit">Search</button>
+    </form>
+    <br>
+
+    <button><a href="/students/add">Add New Student</a></button><br><br>
+    <% if(msg) { %>
+        <p><%=msg%></p>
+    <%}%>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>FIRST NAME</td>
+                <td>LAST NAME</td>
+                <td>EMAIL</td>
+                <td>GENDER</td>
+                <td>BIRTH DATE</td>
+                <td colspan="2">OPTION</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            <%for (let i in dataStudents) {%>
+                <tr>
+                    <td><%=dataStudents[i].id%></td>
+                    <td><%=dataStudents[i].first_name%></td>
+                    <td><%=dataStudents[i].last_name%></td>
+                    <td><%=dataStudents[i].email%></td>
+                    <td><%=dataStudents[i].gender%></td>
+                    <td><%=dataStudents[i].birth_date%></td>
+                    <td><button><a href="/students/<%=dataStudents[i].id%>/edit">EDIT</a></button></td>
+                    <td><button><a href="/students/<%=dataStudents[i].id%>/delete">DELETE</a></button></td>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+    <br>
+    <button><a href="/">Back to Home</a></button>
+</body>
+</html>

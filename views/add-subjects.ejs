@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add new subject</title>
+</head>
+<body>
+    <h1>Add New Subject</h1>
+    <button><a href="/subjects">Back to Data Subjects</a></button><br><br>
+    <form action="/subjects/add" method="post">
+        <% if (error == 'Subject Name harus diisi') {%>
+            <p><%= error %></p>
+        <%}%>
+
+        <%- include('partials/label-dan-input-subject-name') %><br><br>  
+
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

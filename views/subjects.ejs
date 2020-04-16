@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teachers data</title>
+</head>
+<body>
+    <h1>DATA SUBJECTSS</h1>
+
+    <button><a href="/subjects/add">Add New Subject</a></button><br><br>
+    <% if(msg) { %>
+        <p><%=msg%></p>
+    <%}%>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>SUBJECT NAME</td>
+                <td colspan="2">OPTION</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            <%for (let i in dataSubjects) {%>
+                <tr>
+                    <td><%=dataSubjects[i].id%></td>
+                    <td><%=dataSubjects[i].subject_name%></td>
+                    <td><button><a href="/subjects/<%=dataSubjects[i].id%>/edit">EDIT</a></button></td>
+                    <td><button><a href="/subjects/<%=dataSubjects[i].id%>/delete">DELETE</a></button></td>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+    <br>
+    <button><a href="/">Back to Home</a></button>
+</body>
+</html>

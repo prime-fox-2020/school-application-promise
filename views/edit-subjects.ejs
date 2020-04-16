@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit subject</title>
+</head>
+<body>
+    <h1>Edit Subject</h1>
+    
+    <br>
+    <button><a href="/subjects">Back to Data Subjects</a></button><br><br>
+    
+    
+    <form action="/subjects/<%=id%>/edit" method="post">
+        <label>Subject Name:</label><br> 
+        <input type="text" name="subject_name" value="<%=data.subject_name%>"><br><br> 
+        
+        <button type="submit">Edit</button>
+    </form>
+</body>
+</html>

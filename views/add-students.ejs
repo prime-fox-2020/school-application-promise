@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add new students</title>
+</head>
+<body>
+    <h1>Add New Student</h1>
+    <button><a href="/students">Back to Data Students</a></button><br><br>
+    <form action="/students/add" method="post">
+        
+        <% if (error == 'First Name harus diisi') {%>
+            <p><%= error %></p>
+        <%}%>
+        <!-- <%- include('partials/label-dan-input-first-name') %><br><br>   -->
+        <label>First Name:</label><br> 
+        <input type="text" name="first_name">
+        
+
+        <% if (error == 'Last Name harus diisi') {%>
+            <p><%= error%></p>
+        <%}%>
+        <!-- <%- include('partials/label-dan-input-last-name') %><br><br>   -->
+        <label>Last Name</label><br>
+        <input type="text" name="last_name"/>
+        
+
+        <% if (error == 'Email harus diisi') { %>
+            <p><%= error %></p>
+        <%} else if (error == 'Email harus ada character @') { %>
+            <p><%= error %></p>
+        <%}%>
+        <!-- <%- include('partials/label-dan-input-email') %><br><br>   -->
+        <label>Email:</label><br>
+        <input type="text" name="email">
+
+
+        <!-- <%- include('partials/label-dan-input-gender') %><br><br> -->
+        <label>Gender:</label><br> 
+        <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        
+        <% if (error == 'Birth Date harus diisi') { %>
+            <p><%= error%></p>
+        <%} else if (error == 'Format date salah') {%>
+            <p><%= error%></p>
+        <%}%>
+        <!-- <%- include('partials/label-dan-input-birth-date') %><br><br> -->
+        <label>Birth Date: (YYYY-MM-DD)</label><br>
+        <input type="text" name="birth_date">
+
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

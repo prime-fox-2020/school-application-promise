@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student by email</title>
+</head>
+<body>
+    <h1>Data Student By Email</h1>
+    
+    <%if(data[0]) {%>
+        <h4>Data student dengan email: <%=email%> </h4>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>FIRST NAME</td>
+                    <td>LAST NAME</td>
+                    <td>EMAIL</td>
+                    <td>GENDER</td>
+                    <td>BIRTH DATE</td>
+                    <td colspan="2">OPTIONS</td>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let i = 0; i < data.length; i++) {%>
+                    <tr>
+                        <td><%= data[i].id %></td>
+                        <td><%= data[i].first_name %></td>
+                        <td><%= data[i].last_name %></td>
+                        <td><%= data[i].email %></td>
+                        <td><%= data[i].gender %></td>
+                        <td><%= data[i].birth_date %></td>
+                        <td><button><a href="/students/<%= data[i].id %>/edit">Edit</a></button></td>
+                        <td><button><a href="/students/<%= data[i].id %>/delete">Delete</a></button></td>
+                    </tr>
+                <%}%>
+            </tbody>
+        </table>
+    <%} else {%>
+        <h3>Data students dengan email: <%=email%> tidak ada </h3>
+    <%}%>
+    <br>
+    <button><a href="/students">Back to Data Students</a></button><br><br>
+</body>
+</html>
