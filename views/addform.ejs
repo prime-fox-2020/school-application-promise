@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<form action="/student/add" method="POST">
+    <div class="form-group">
+        &nbsp;&nbsp;<label for="exampleInputEmail1">First Name</label>
+        &nbsp; &nbsp;<input name="first_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+        &nbsp; &nbsp;<label for="exampleInputEmail1">Last Name</label>
+        &nbsp;&nbsp;<input name="last_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+        &nbsp;&nbsp;<label for="exampleInputEmail1">Email</label>
+        &nbsp;&nbsp;<input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+        &nbsp;&nbsp;<label for="exampleInputEmail1">Gender</label>
+        &nbsp;&nbsp;<select name="gender" class="form-control">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        &nbsp;&nbsp;<label for="exampleInputEmail1">Birth Date</label>
+        &nbsp;&nbsp;<input name="birth_date" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"><br>
+
+        &nbsp; &nbsp;<button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Subject Name</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% object.forEach(item => { %>
+        <tr>
+            <td><%= item.id  %></td>
+            <td><%= item.subject_name  %></td>
+            <td><a href="subject/<%= item.id %>/edit">Edit</a> | <a href="subject/<%= item.id %>/delete">Delete</a></td>            
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+&nbsp;<a display="inline" class="btn btn-primary btn-lg" href="/subject/add" role="button">Add Subject</a>
+
+<%- include('partials/footer') %>

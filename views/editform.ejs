@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+
+<form action="" method="POST">
+    <div class="form-group">
+        &nbsp;&nbsp;<label for="exampleInputEmail1">First Name</label>
+        &nbsp; &nbsp;<input name="first_name" type="text" class="form-control" id="exampleInputEmail1" value="<%= object[0].first_name %>"><br>
+
+
+        &nbsp; &nbsp;<label for="exampleInputEmail1">Last Name</label>
+        &nbsp;&nbsp;<input name="last_name" type="text" class="form-control" id="exampleInputEmail1" value="<%= object[0].last_name %>"><br>
+
+        &nbsp;&nbsp;<label for="exampleInputEmail1">Email</label>
+        &nbsp;&nbsp;<input name="email" type="email" class="form-control" id="exampleInputEmail1" value="<%= object[0].email %>"><br>
+
+        &nbsp;&nbsp;<label for="exampleInputEmail1">Gender</label>
+        &nbsp;&nbsp;<select name="gender" class="form-control" >
+            <option <%= object[0].gender == 'Male' ? 'selected' : '' %>>Male</option>
+            <option <%= object[0].gender == 'Female' ? 'selected' : '' %>>Female</option>
+            
+        </select><br>
+
+        &nbsp;&nbsp;<label for="exampleInputEmail1">Birth Date</label>
+        &nbsp;&nbsp;<input name="birth_date" type="text" class="form-control" id="exampleInputEmail1" value="<%= object[0].birth_date %>"><br><br>
+
+        &nbsp; &nbsp;<button type="submit" class="btn btn-primary">Edit</button>
+    </div>
+</form>
+
+<%- include('partials/footer') %>

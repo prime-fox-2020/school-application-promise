@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Birth Date</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% object.forEach(item => { %>
+        <tr>
+            <td><%= item.id  %></td>
+            <td><%= item.first_name  %></td>
+            <td><%= item.last_name  %></td>
+            <td><%= item.email  %></td>
+            <td><%= item.gender  %></td>
+            <td><%= item.birth_date  %></td>
+            <td><a href="student/<%= item.id %>/edit">Edit</a> | <a href="student/<%= item.id %>/delete">Delete</a></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+&nbsp;<a display="inline" class="btn btn-primary btn-lg" href="/student/add" role="button">Add Student</a>
+
+<%- include('partials/footer') %>
