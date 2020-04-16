@@ -1,0 +1,9 @@
+<%- include('partials/header',{browsertittle:"Edit Student Data",header :"Edit a Student Information"}) %>
+<% if(error){ %>
+    <p style="color: red;"><%= error %></p>
+<% } %>
+<body>
+    <form action ="/students/edit/<%=id%>" method ="post">
+        <%- include('partials/edit_add_form',{Button : "Edit"}) %>
+    </form>
+</body>

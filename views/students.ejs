@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <title>Students's List</title>
+</head>
+
+<body>
+    <h1> Students's List</h1>
+    <h4><a href = "/students/add">Register a New Student</a></h4>
+        <table border = 1 >
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>E-mail</th>
+            <th>Birth Date</th>
+            <th>Gender</th>
+            <th>Options</th>
+        </tr>
+        <% for(var i = 0; i< data.length; i++) {%>
+        <tr>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].first_name %></td>
+            <td><%= data[i].last_name %></td>
+            <td><%= data[i].email %></td>
+            <td><%= data[i].birth_date %></td>
+            <td><%= data[i].gender %></td>
+            <td><a href = "/students/delete/<%=data[i].id%>">Delete</a>|<a href="/students/edit/<%=data[i].id%>">Edit</a></td>
+        </tr>
+
+        <% } %>
+
+    </table>
+</body>

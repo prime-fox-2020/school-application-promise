@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>Subject's List</title>
+</head>
+
+<body>
+    <h1> Subject's List</h1>
+        <table border = 1 >
+        <tr>
+            <th>Id</th>
+            <th>Subject Name</th>
+        </tr>
+        <% for(var i = 0; i< data.length; i++) {%>
+        <tr>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].subject_name %></td>
+        </tr>
+
+        <% } %>
+
+    </table>
+</body>

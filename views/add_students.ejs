@@ -1,0 +1,10 @@
+<%- include('partials/header',{browsertittle:"Register",header :"Register a New Student"}) %>
+<% if(error){ %>
+    <p style="color: red;"><%= error %></p>
+<% } %>
+
+<body>
+    <form action ="/students/add" method ="post">
+        <%- include('partials/edit_add_form',{Button : "Register"}) %>
+    </form>
+</body>
