@@ -1,0 +1,48 @@
+    <div class="form-group">
+        <label for="">First Name</label>
+        <input type="text" name="first_name" placeholder="Student First Name" 
+        <% if(type === 'Edit'){ %>
+            value="<%=data[0].first_name%>"
+        <% } %>
+        class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="">Last Name</label>
+        <input type="text" name="last_name" placeholder="Student Last Name" 
+        <% if(type === 'Edit'){ %>
+            value="<%=data[0].last_name%>"
+        <% } %>
+        class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="">Email Name</label>
+        <input type="text" name="email" placeholder="Student Email"
+        <% if(type === 'Edit'){ %>
+            value="<%=data[0].email%>"
+        <% } %> 
+        class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="">Gender</label>
+        <select name="gender" class="form-control">
+            <% if(type === 'Edit'){ %>
+                <option value="male" <%= data[0].gender ==='male' ? 'selected' : '' %>>Male</option>
+                <option value="female" <%= data[0].gender ==='female' ? 'selected' : '' %>>Female</option>
+            <% } %> 
+            <% if(type === 'Add'){ %>
+                <option value="" selected disabled>Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            <% } %> 
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="">Birth Date</label>
+        <input type="text" name="birth_date" placeholder="Student Birth Date with format DD-MM-YYYY"
+        <% if(type === 'Edit'){ %>
+            value="<%=`${data[0].birth_date.getDate()}-${data[0].birth_date.getMonth()+1}-${data[0].birth_date.getFullYear()}`%>"
+        <% } %> 
+        class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary"><%= type %></button>
+</form>

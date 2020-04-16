@@ -1,0 +1,66 @@
+<%- include('partials/header', {titledoc: 'students', header: 'Students Data'} )%>
+        <div class="container text-center my-3"><a href="/students/add">Add Student</a></div>
+       
+        <div class="input-group mb-3">
+            <input type="text" id="myInput" onkeyup="search()" class="form-control" placeholder="Search students email">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" onclick="search()">Search</button>
+            </div>
+        </div>
+     
+        <% if (alert){ %>
+            <div class="alert alert-<%= alert.type %> text-center" role="alert">
+                <%= alert.message %>
+            </div>
+        <% } %>
+        
+        <% if(data){ %>
+            <table class="table table-striped" id="myTable">
+                <thead>
+                    <tr>
+                        <% for(let key in data[0]){ %>
+                            <th scope="col" class="text-center"><%= key %></th>    
+                        <% } %>
+                        <th scope="col" class="text-center">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach( list => { %>
+                        <tr>
+                            <td class="text-center"><%= list.id %></td>
+                            <td class="text-center"><%= list.first_name %></td>
+                            <td class="text-center"><%= list.last_name %></td>
+                            <td class="text-center"><%= list.email %></td>
+                            <td class="text-center"><%= list.gender %></td>
+                            <td class="text-center"><%= `${list.birth_date.getDate()}-${list.birth_date.getMonth()+1}-${list.birth_date.getFullYear()}` %></td>
+                            <td class="text-center"><a href="/students/<%= list.id %>/edit">Edit</a> | <a href="/students/<%= list.id %>/delete">Delete</a></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+    <div class="container text-center mt-5"><a href="/">Home</a></div>
+    <script>
+        function search(){
+            let txtValue
+            let input = document.getElementById('myInput')
+            let filter = input.value.toUpperCase()
+            let table = document.getElementById('myTable')
+            let tr = document.getElementsByTagName('tr')
+
+            for(let i = 0; i < tr.length; i++){
+                let td = tr[i].getElementsByTagName("td")[3]
+                if(td){
+                    txtValue = td.textContent || td.innerText
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }   
+            }
+        }
+    </script>
+</body>
+</html>

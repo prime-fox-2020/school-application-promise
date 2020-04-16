@@ -1,0 +1,29 @@
+<%- include('partials/header', {titledoc: 'subjects', header: 'Subjects Data'} )%>
+
+        <div class="container-sm">
+            <% if(data){ %>
+                <table class="table table-striped  mt-5">
+                    <thead>
+                        <tr>
+                            <% for(let key in data[0]){ %>
+                                <th scope="col" class="text-center"><%= key %></th>    
+                            <% } %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% data.forEach( list => { %>
+                            <tr>
+                                <td class="text-center"><a href="/subjects/<%= list.id %>"><%= list.id %></a></td>
+                                <td class="text-center"><%= list.subject_name %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                    
+                </table>
+            <% } %>
+        </div>
+    </div>
+    <div class="container text-center mt-5"><a href="/">Home</a></div>
+
+</body>
+</html>

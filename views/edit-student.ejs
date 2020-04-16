@@ -1,0 +1,13 @@
+<%- include('partials/header', {titledoc: 'edit students', header: 'Edit Student Data'} )%>
+
+        <h1 class="text-center "></h1>
+        <% if (error){ %>
+            <div class="alert alert-danger text-center" role="alert">
+                <%= error.error %>
+            </div>
+        <% } %>
+        <form action="/students/<%=data[0].id%>/edit" method="post">
+            <%- include('partials/form', {type : 'Edit'} )%>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<%- include('partials/header', {titledoc: 'add students', header: 'Add Students Data'} )%>
+        <div class="container text-center my-3"><a href="/students/">Show All Students</a></div>
+        <% if (error){ %>
+            <div class="alert alert-danger text-center" role="alert">
+                <%= error.error %>
+            </div>
+        <% } %>
+        <form action="/students/add" method="POST">
+            <%- include('partials/form', {type : 'Add'} )%>
+    </div>
+</body>
+</html>
