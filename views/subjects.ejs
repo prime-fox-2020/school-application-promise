@@ -1,0 +1,21 @@
+<%- include('./partial/header') %>
+
+    <h1>School App</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Subject Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for(let i = 0; i < subjects.length; i++) {%>
+          <tr>
+            <td><%=subjects[i].id%></td>
+            <td><%=subjects[i].subject_name %></td>
+          </tr>
+            <%}%>
+      </tbody>
+    </table>
+  </body>
+</html>

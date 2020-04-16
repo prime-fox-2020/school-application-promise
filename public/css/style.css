@@ -1,0 +1,12 @@
+body {
+  text-align: center;
+  margin: 10px 10%
+}
+
+.navbar {
+  margin: auto;
+}
+
+.input-text {
+  width: 50%;
+}

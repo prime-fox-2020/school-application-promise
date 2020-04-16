@@ -1,0 +1,41 @@
+<%- include('./partial/header') %>
+    <h1>Students Data</h1>
+    <%if(alert) {%>
+    <div class="alert alert-<%= alert.type%>" role="alert">
+      <%= alert.message %>
+    </div>
+    <%}%>
+    <% if(students.length) {%>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Birth Date</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for(let i = 0; i < students.length; i++){%>
+          <tr>
+            <td><%=students[i].id%></td>
+            <td><%=students[i].first_name %></td>
+            <td><%=students[i].last_name%></td>
+            <td><%=students[i].email %></td>
+            <td><%=students[i].gender %></td>
+            <td><%=students[i].birth_date%></td>
+            <td>
+              <a class="btn btn-success" href="/students/<%= students[i].id %>/edit" role="button">Edit</a>
+              <a class="btn btn-danger" href="/students/<%= students[i].id %>/delete" role="button">Delete</a>
+            </td>
+          </tr>
+            <%}%>
+      </tbody>
+    </table>
+    <%}%> 
+    <a href="/students/add" class="btn btn-primary">Add students</a>
+  </body>
+</html>

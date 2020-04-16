@@ -1,0 +1,26 @@
+<%- include('./partial/header') %>
+    <h1>School App</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for(let i = 0; i < teachers.length; i++) {%>
+          <tr>
+            <td><%=teachers[i].id%></td>
+            <td><%=teachers[i].first_name %></td>
+            <td><%=teachers[i].last_name%></td>
+            <td><%=teachers[i].email %></td>
+            <td><%=teachers[i].gender %></td>
+          </tr>
+            <%}%>
+      </tbody>
+    </table>
+  </body>
+</html>
