@@ -1,0 +1,23 @@
+<%- include ('partials/header', {title: 'Edit Student'})%>
+    <%- include ('partials/middle')%>
+
+    <form action="/students/<%=data[0].id%>/edit" method="post">
+
+      <label>First Name</label>
+      <input type="text" name="firstName" value = <%=data[0].first_name%> ><br>
+      <label>Last Name</label>
+      <input type="text" name="lastName" value = <%=data[0].last_name%> ><br>
+      <label>Email</label>
+      <input type="text" name="email" value = <%=data[0].email%> ><br>
+      <label>Gender</label>
+      <select name="gender" >
+        <option value="" disabled >Select your gender!</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+      </select><br>
+      <label>Birthdate</label>
+      <input type="text" name="birthdate" value = '<%=data[0].birthdate%>'><br>
+
+      <button type="submit">Submit</button>
+    </form><br>
+<%- include ('partials/footer')%>
