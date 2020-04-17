@@ -10,74 +10,77 @@ class Student {
         this.birth_date = birth_date;
     }
 
-    static getTable(){
-        const select = pool.query('SELECT * FROM "students" ORDER BY "id" ASC')
-        return select
-    }
 
     static viewStudents(){
         return new Promise((resolve,reject)=>{
-            const data = this.getTable()
-            .then(res => {
-                resolve(data)
-              })
-            .catch(err =>{
-                reject(err)
+           pool.query('SELECT * FROM "students" ORDER BY "id" ASC',(err,res)=> {
+                if(err){
+                    reject(err)
+                }else{
+                    resolve(res.rows)
+                }
             })
         })
     }
 
-    static edit (id,cb){
-        let selectById =  `SELECT * FROM "students" WHERE id = ${id}`
-        pool.query(selectById, (err, data) => {
-            if(err){
-                cb(err, null)
-            } else{
-                const editData = data.rows[0]
-                cb(null, editData)
-            }
-        })
-    }   
+    static edit (id){
+        return new Promise((resolve,reject)=>{
+            let selectById =  `SELECT * FROM "students" WHERE id = ${id}`
+            pool.query(selectById, (err, res) => {
+                if(err){
+                    reject(err)
+                }else{
+                    resolve(res.rows[0])
+                }
 
-    static change(body, cb){ 
-        let validasi = this.validasi(body)
-
-        if(validasi.length !== 0){
-            cb(null,validasi)
-        }
-
-        let changeData = `UPDATE "students" SET first_name = '${body.first_name}', 
-        last_name = '${body.last_name}', 
-        email = '${body.email}', gender = '${body.gender}' , birth_date = '${body.birth_date}',WHERE id = ${body.id}`
-        
-        pool.query(changeData, (err, data) => {
-            if(err){
-                cb(err, null)
-            } else{
-                console.log('changeData in model done')
-                cb(null, true)
-            }
+            })
         })
     }
 
-    static delete(id, cb) {
-        let deleteData = `DELETE FROM "students" WHERE "id" = '${id}'`
-        pool.query(deleteData, (err, res) => {
-          if (err) {
-                cb(err, nul)
-          } else {
-                console.log('berhasil delete')
-                cb(null, true)
-          }
+    static change(body){ 
+        return new Promise((resolve,reject)=>{
+            let validasi = this.validasi(body)
+
+            if(validasi.length !== 0){
+                reject(validasi)
+            }
+            
+            let changeData = `UPDATE "students" SET first_name = '${body.first_name}', 
+            last_name = '${body.last_name}', 
+            email = '${body.email}', gender = '${body.gender}' , birth_date = '${body.birth_date}',WHERE id = ${body.id}`
+
+            pool.query(changeData, (err, data) => {
+                if(err){
+                    reject(err)
+                } else{
+                    console.log('changeData in model done')
+                    resolve(true)
+                }
+            })
         })
     }
 
 
-    static add(body,cb){
-        let validasi = this.validasi(body)
+    static delete(id) {
+        return new Promise((resolve,reject)=>{
+            let deleteData = `DELETE FROM "students" WHERE "id" = '${id}'`
+            pool.query(deleteData, (err, res) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    console.log('berhasil delete')
+                    resolve(true)
+                }
+            })
+        })
+    }
 
+
+    static add(body){
+        return new Promise((resolve,reject)=>{
+        let validasi = this.validasi(body)
         if(validasi.length !== 0){
-            cb(validasi,null)
+            reject(validasi)
         }else{
             let insertNewData = `INSERT INTO "students"("first_name","last_name","email","gender","birth_date")
             VALUES\n`
@@ -85,26 +88,30 @@ class Student {
             '${body.birth_date}');`
             pool.query(insertNewData,(err,data)=>{
                 if(err){
-                    cb(err,null)
+                    reject(err)
                 }else{
                     console.log('insertNewData in model done')
-                    cb(null,true)
-            }
+                    resolve(true)
+                }
             })
         }
+        })
     }
 
-    static selectEmail(email,cb){
-        let selectEmail = `SELECT * FROM "students" WHERE "email" = '${email}'`
-
-        pool.query(selectEmail, (err, data) => {
-            if(err){
-                cb(err, null)
-            } else{
-                const byEmail = [data.rows[0]]
-                cb(null, byEmail)
-            }
+    static selectEmail(email){
+        return new Promise((resolve,reject)=>{
+            console.log(email)
+            let selectEmail = `SELECT * FROM "students" WHERE "email" = '${email}'`
+            pool.query(selectEmail, (err, data) => {
+                if(err){
+                    reject(err)
+                } else{
+                    const byEmail = [data.rows[0]]
+                    resolve(byEmail)
+                }
+            })
         })
+   
     }
 
     static validasi(data) {

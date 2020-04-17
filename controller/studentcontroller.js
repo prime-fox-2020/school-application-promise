@@ -5,8 +5,7 @@ class Controller {
     static viewStudents(req,res){
         Students.viewStudents()
             .then(data=>{
-                console.log(data)
-                //res.send(data)
+                res.render("students",{data})
             })
             .catch(err=>{
                 res.send(err)
@@ -15,41 +14,40 @@ class Controller {
 
     static edit(req,res){
         const id = req.params.id
-        Students.edit(id,(err,data)=>{
-            if(err){
+        Students.edit(id)
+            .then(data=>{
+                res.render("studentedit",{data})
+            })
+            .catch(err=>{
                 res.send(err)
-            }else{
-                res.render('studentedit',{data})
-            }
+            }) 
 
-        })
     }
 
     static change(req,res){
         const body = req.body
-        console.log(body)
-        Students.change(body,(err,data)=>{
-            if(err){
-                res.send(err)
-            }else{
-                res.redirect('/students',{error})
-            }
-
-        })
+        Students.change(body)
+            .then(data=>{
+                res.rendirect('/students')
+            })
+            .catch(err=>{
+                console.log(err)
+                // res.render('students',{err})
+            })
     }
     
     static delete(req,res){
         const id = req.params.id
         console.log (id)
-        Students.delete(id,(err,data)=>{
-            if(err){
-                res.send(err)
-            }else{
+        Students.delete(id)
+            .then(data=>{
                 res.redirect('/students')
-            }
-            
-        }) 
+            })
+            .catch(err=>{
+                res.send(err)
+            })
     }
+
 
     static addForm(req,res){
         const error= req.query.error
@@ -61,32 +59,27 @@ class Controller {
     static add(req,res){
         const body = req.body
         console.log(body)
-        Students.add(body,(err,data)=>{
-            if(err){
-                console.log(err)
-                if(Array.isArray(err)) {
-                res.redirect(`/student/add?error=${err.join(',')}`)
-                }
-            }else{
+        Students.add(body)
+            .then(data=>{
                 res.redirect('/students')
-            }
-
-        })
+            })
+            .catch(err=>{
+                if(Array.isArray(err)) {
+                    res.redirect(`/student/add?error=${err.join(',')}`)
+                    }
+            })
     }
 
     static selectEmail(req,res){
         const email = req.params.email
-        console.log (email)
-        Students.selectEmail(email,(err,data)=>{
-            if (err){
-                res.send(err)
-            }else{
-                console.log(data)
+        Students.selectEmail(email)
+            .then(data=>{
                 res.render("students",{data})
-            }
-        })
+            })
+            .catch(err=>{
+                res.send(err)
+            })
     }
-
 }
 
 
