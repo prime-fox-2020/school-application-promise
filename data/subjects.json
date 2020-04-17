@@ -1,0 +1,18 @@
+[
+    {
+        "id" : 1,
+        "subject_name" : "Fisika"
+
+    },
+    {
+        "id" : 420,
+        "subject_name" : "Rocket Science"
+
+    },
+    {
+        "id" : 2,
+        "subject_name" : "Ekonomi"
+
+    }
+    
+]

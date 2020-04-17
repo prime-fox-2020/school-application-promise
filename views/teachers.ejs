@@ -1,0 +1,39 @@
+<h1>Teachers</h1>
+<%- include('../partials/navbar.ejs') %>
+<p1>
+<table>
+<th>Teachers</th>
+<a href="/teacher/add"><button>ADD</button></a>
+    <table border='1'>
+        <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>E-mail</th>
+            <th>Gender</th>
+            <th>Action</th>
+        </tr>
+        <tbody>
+            <% data.forEach(el => {%>
+            <tr>
+                <td><%= el.id %></td>
+                <td><%= el.first_name %></td>
+                <td><%= el.last_name %></td>
+                <td><%= el.email %></td>
+                <td><%= el.gender %></td>
+                <td> 
+                    <a href="/teacher/<%= el.id%>/edit "><button>Edit</button></a>
+                    <a href="/teacher/<%= el.id%>/delete"><button>Delete</button></a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+
+
+
+    </table>
+
+
+</form>
+</table>
+</p1>

@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "first_name": "Joko",
+        "last_name": "Santoso",
+        "email": "jokosantoso@sekolah.id",
+        "gender": "male"
+    },
+    {
+        "id": "2",
+        "first_name": "Lukman",
+        "last_name": "Riki",
+        "email": "lukmanriki@sekolah.id",
+        "gender": "female"
+    },
+    {
+        "id": "3",
+        "first_name": "Siti",
+        "last_name": "Nurhayati",
+        "email": "sitinurhayati@sekolah.id",
+        "gender": "female"
+    },
+    {
+        "id": "4",
+        "first_name": "Rika",
+        "last_name": "Risti",
+        "email": "rikaristi@sekolah.id",
+        "gender": "male"
+    },
+    {
+        "id": 5,
+        "first_name": "test",
+        "last_name": "test",
+        "email": "test@gmail.com",
+        "gender": "test"
+    }
+]

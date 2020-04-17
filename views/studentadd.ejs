@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang=eng>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scale=1.0">
+        <title>List Students</title>
+    </head>
+
+    <body>
+        <% if (error) { %>
+            <p style="color: red;"><%= error %></p>
+          <% } %>
+
+        <h1>Add Students</h1>
+        <%- include('../partials/navbar.ejs') %>
+            <div class="alert alert-danger" role="alert">
+            </div>
+            <form action = "/student/add" method="post">
+            <label for = "">First Name</label>
+            <br>
+            <input type = "text" name = "first_name">
+            <br>
+            <label for = "">Last Name</label>
+            <br>
+            <input type = "text" name = "last_name">
+            <br>
+            <label for = "">E-mail</label>
+            <br>
+            <input type = "text" name = "email">
+            <br>
+            <label for = "">Gender</label>
+            <br>
+            <input type = "text" name = "gender">
+            <br>
+            <label for = "">Birth Date</label>
+            <br>
+            <input type = "text" name = "birth_date">
+            <br>
+            <button type = "Submit"> Submit </button>
+            </form>
+    </body>
+
+
+</table>
+</p1>
+</html>

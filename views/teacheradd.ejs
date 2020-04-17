@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang=eng>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scale=1.0">
+        <title>List Teachers</title>
+    </head>
+    
+    <body>
+        <h1>Add Teacher</h1>
+        <%- include('../partials/navbar.ejs') %>
+            <div class="alert alert-danger" role="alert">
+            </div>
+            <form action = "/teacher/add" method="post">
+            <label for = "">First Name</label>
+            <br>
+            <input type = "text" name = "first_name">
+            <br>
+            <label for = "">Last Name</label>
+            <br>
+            <input type = "text" name = "last_name">
+            <br>
+            <label for = "">E-mail</label>
+            <br>
+            <input type = "text" name = "email">
+            <br>
+            <label for = "">Gender</label>
+            <br>
+            <input type = "text" name = "gender">
+            <br>
+            <button type = "Submit"> Submit </button>
+            </form>
+    </body>
+
+
+</table>
+</p1>
+</html>
