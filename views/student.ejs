@@ -1,0 +1,44 @@
+<%- include('partial/navbar',{status:'student'}); %>
+      <!-- body table -->
+      <div>
+        <h1>Students Information:</h1>
+        <!-- <a href="/students/add">add student</a> -->
+        </div>
+        <% if (alert){ %>
+          <div class="alert alert-<%= alert.type %> text-center" role="alert">
+              <%= alert.message %>
+          </div>
+      <% } %>
+        <table  class="table table-sm table-dark">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First_name</th>
+                <th scope="col">Last_name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Birth_date</th>
+              </tr>
+            </thead>
+            <% for( i = 0 ; i < data.length ; i++ ){ %>
+                <tr>
+                    <th scope="col"><%= data[i].id %></th>
+                    <th scope="col"><%= data[i].first_name %></th>
+                    <th scope="col"><%= data[i].last_name %></th>
+                    <th scope="col"><%= data[i].email %></th>
+                    <th scope="col"><%= data[i].gender %></th>
+                    <th scope="col"><%= data[i].birth_date %></th>
+                    <th>
+                    <a href="/students/<%=data[i].id%>/delete"type="button" class="btn btn-danger">Delete</a>&nbsp;
+                    <a href="/students/<%=data[i].id%>/edit"type="button" class="btn btn-info">Edit</a>
+                  </th>
+                  </tr>
+            <%  }   %>
+        </table>
+        <style>
+            div{
+                text-align: center;
+            }
+        </style>
+</body>
+</html>

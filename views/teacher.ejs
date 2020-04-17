@@ -1,0 +1,30 @@
+<%- include('partial/navbar',{status:''}); %>
+      <!-- body table -->
+      <div>
+        <h1>Teacher Information:</h1>
+    </div>
+    <table class="table table-sm table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First_name</th>
+            <th scope="col">Last_name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+        </tr>
+        <% for( i = 0 ; i < data.length ; i++ ){ %>
+            <tr>
+                <th scope="col"><%= data[i].id %></th>
+                <th scope="col"><%= data[i].first_name %></th>
+                <th scope="col"><%= data[i].last_name %></th>
+                <th scope="col"><%= data[i].email %></th>
+                <th scope="col"><%= data[i].gender %></th>   
+            </tr>
+        <%  }   %>
+    </table>
+        <style>
+            div{
+                text-align: center;
+            }
+        </style>
+</body>
+</html>

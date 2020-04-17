@@ -1,0 +1,19 @@
+<%- include('partial/navbar',{status:''}); %>
+      <!-- body table -->
+        <div id="pertama">
+        <h1>Add Students Data</h1>
+        <%if(error){%>
+            <div class="alert alert-danger text-center" role="alert">
+                <%= error %>
+            </div>
+        <%}%> 
+        <!-- <a href="/students">show all data</a> -->
+        </div>   
+        <%- include('partial/form',{status:'edit'}); %>
+</body>
+<style>
+    div.pertama{
+        text-align: center;
+    }
+</style>
+</html>
