@@ -1,0 +1,25 @@
+<%- include ('./partials/header')%>
+<div class="container">
+  <h3 class = 'text-center mt-3'>Teachers Data</h3>
+  <table class="table table-bordered">
+    <thead class = 'thead-dark'>
+      <tr class = 'text-center'>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let teacher of teachers) { %>
+      <tr class = 'text-center'>
+        <th scope="row"><%= teacher.id %></th>
+        <td><%= teacher.first_name %></td>
+        <td><%= teacher.last_name %></td>
+        <td><%= teacher.email %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<%- include ('./partials/footer')%>

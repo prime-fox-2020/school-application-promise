@@ -1,0 +1,21 @@
+<%- include ('./partials/header')%>
+<div class="container">
+  <h3 class = 'text-center mt-3'>Subjects Data</h3>
+  <table class="table table-bordered">
+    <thead class = 'thead-dark'>
+      <tr class = 'text-center'>
+      <th scope="col">Id</th>
+      <th scope="col">Subject</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let subject of subjects) { %>
+      <tr class = 'text-center'>
+        <th scope="row"><%= subject.id %></th>
+        <td><%= subject.subject_name %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<%- include ('./partials/footer')%>
