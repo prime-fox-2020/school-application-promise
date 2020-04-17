@@ -25,14 +25,17 @@ class StudentController {
   }
 
   static getAdd(req, res) {
-    res.render('student/add')
+    res.render('student/add', { alert: req.query })
   }
 
   static postAdd(req, res) {
     StudentModel.createOne(req.body)
-      .then(data => {
+      .then((data) => {
         // res.send(data)
-        res.redirect(`/students?message=${data}&type=green`)
+        if (data === 'Data berhasil ditambahkan')
+          res.redirect(`/students?message=${data}&type=green`)
+        else
+          res.redirect(`/students/add?message=${data}&type=deep-orange`)
       })
       .catch(err => {
         res.render('public/404', { errMsg: err })

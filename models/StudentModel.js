@@ -110,7 +110,7 @@ class StudentModel {
           }
         })
       } else {
-        reject('All fields should not be empty.')
+        resolve('All fields should not be empty.', false)
       }
     })
   }

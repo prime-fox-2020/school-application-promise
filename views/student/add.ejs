@@ -1,5 +1,8 @@
 <%- include('../partials/header') %>
 <div class="container">
+  <% if (alert.type) { %>
+  <%- include('../partials/alert') %>
+  <% } %>
   <h3>Add New Student Data</h3>
   <div class="row">
     <form class="col s12" action="/students/add" method="post">
