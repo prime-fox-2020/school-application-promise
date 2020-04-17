@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+  <body>
+    <h1>Teachers Data</h1>
+    <table border="1" style="width:100%; border: 1px solid black;
+    border-collapse: collapse;">
+      <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+      <% for(let i = 0; i < teachers.length; i++) { %> 
+      <tr>
+        <td><%= teachers[i].id %></td>
+        <td><%= teachers[i].first_name %></td>
+        <td><%= teachers[i].last_name %></td>
+        <td><%= teachers[i].email %></td>
+      </tr>
+      <% } %> 
+    </table> 
+  </body>
+<%- include('partials/footer') %>

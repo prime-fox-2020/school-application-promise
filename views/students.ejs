@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+  <body>
+    <h1>Students Data</h1>
+    <table border="1" style="width:100%; border: 1px solid black;
+    border-collapse: collapse;">
+      <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Birth Date</th>
+        <th>Options</th>
+      </tr>
+      <% for(let i = 0; i < students.length; i++) { %> 
+      <tr>
+        <td><%= students[i].id %></td>
+        <td><%= students[i].first_name %></td>
+        <td><%= students[i].last_name %></td>
+        <td><%= students[i].email %></td>
+        <td><%= students[i].gender %></td>
+        <td><%= students[i].birth_date %></td>
+        <td><a href="/students/<%= students[i].id %>/edit">Edit</a> | <a href="/students/<%= students[i].id %>/delete">Delete</a></td>
+      </tr>
+      <% } %> 
+    </table> 
+    <a href="/students/add"><h3>Add student</h3></a>
+  </body>
+<%- include('partials/footer') %>

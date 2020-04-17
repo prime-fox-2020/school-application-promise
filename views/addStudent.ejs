@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+  <body>
+    <h1>Add student</h1>
+    <a href="/students"><h3>View students data</h3></a>
+        <% if (error){ %>
+              <%= error.error %>
+        <% } %>
+        <form action="/students/add" method="POST">
+          <input placeholder="first_name" type="text" name="first_name" required><br>
+          <input placeholder="last_name" type="text" name="last_name" required><br>
+          <input placeholder="email" type="text" name="email" required><br>
+          <select name="gender" required> 
+            <option value="male">male</option> 
+            <option value="female">female</option>
+          </select> <br>
+          <input placeholder="dd-mm-yyyy" type="text" name="birth_date" required><br>
+          <button type="submit">Submit</button>
+        </form>
+  </body>
+<%- include('partials/footer') %>

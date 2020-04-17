@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+  <body>
+    <h1>Subjects Data</h1>
+    <table border="1" style="width:100%; border: 1px solid black;
+    border-collapse: collapse;">
+      <tr>
+        <th>ID</th>
+        <th>Subject</th>
+      </tr>
+      <% for(let i = 0; i < subjects.length; i++) { %> 
+      <tr>
+        <td><%= subjects[i].id %></td>
+        <td><%= subjects[i].subject_name %></td>
+      </tr>
+      <% } %> 
+    </table> 
+  </body>
+<%- include('partials/footer') %>
