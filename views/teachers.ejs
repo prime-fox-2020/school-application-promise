@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/boostrap.ejs') %>
+        <title>Teachers</title>
+    </head>
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+
+        <div class="jumbotron">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Gender</th>
+                </tr>
+                </thead>
+                <% for(let i =0; i < teachers.length; i++) { %>
+                <tbody>
+                <tr>
+                    <th scope="row"><%= teachers[i].id %></th>
+                    <td><%= teachers[i].first_name %></td>
+                    <td><%= teachers[i].last_name %></td>
+                    <td><%= teachers[i].email %></td>
+                    <td><%= teachers[i].gender %></td>
+                </tr>
+                </tbody>
+                <% } %>
+            </table>
+        </div>
+    </body>
+</html>
