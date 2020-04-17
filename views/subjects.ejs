@@ -1,0 +1,25 @@
+<%- include(`../partials/header`,{link : 'subjects', judul: 'Subjects'}) %>
+
+    </div>
+       </nav>
+    <div class="jumbotron">
+        <% if(data.length){ %>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Subject Name</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% data.forEach(element =>{ %>
+              <tr>
+                <th scope="row"><%= element.id %> </th>
+                <td><%= element.subjects_name %> </td>
+              </tr>
+            <% }) %>
+            </tbody>
+          </table>
+        <% } %>
+
+        <%- include(`../partials/footer`) %>
