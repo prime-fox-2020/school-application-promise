@@ -1,0 +1,31 @@
+<%- include('./partials/header', {title: 'Teachers'}) %>
+    <h1>Teachers Data</h1>
+
+   
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">First_name</th>
+          <th scope="col">Last_name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+        
+        </tr>
+      </thead>
+      <tbody>
+      <% for(var i = 0; i < data.length; i++){ %>
+        <tr>
+          <td><%= data[i].id%></td>
+          <td><%= data[i].first_name %></td>
+          <td><%= data[i].last_name %></td>
+          <td><%= data[i].email %></td>
+          <td><%= data[i].gender %></td>
+          
+        </tr>
+
+      <% } %>
+      </tbody>
+    </table>
+    <%- include ('./partials/footer') %>

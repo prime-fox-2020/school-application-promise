@@ -1,0 +1,23 @@
+<%- include('./partials/header', {title: 'Subjects'}) %>
+
+    <h1>Subject DATA</h1>
+
+   
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Subject_name</th>
+         </tr>
+      </thead>
+      <tbody>
+      <% for(var i = 0; i < data.length; i++){ %>
+        <tr>
+          <td><%= data[i].id%></td>
+          <td><%= data[i].subject_name %></td>
+         </tr>
+       <% } %>
+      </tbody>
+    </table>
+ <%- include ('./partials/footer') %>

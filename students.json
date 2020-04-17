@@ -1,0 +1,19 @@
+[
+  
+  {
+    "id": "5",
+    "first_name": "Airell",
+    "last_name": "Jordan",
+    "email": "joeyjordan@gmail.com",
+    "gender": "male",
+    "birth_date": "1920-12-02"
+  },
+  {
+    "id": "6",
+    "first_name": "Jerome",
+    "last_name": "Lisa",
+    "email": "joojojo@gmail.com",
+    "gender": "female",
+    "birth_date": "1940-09-23"
+  }
+]
