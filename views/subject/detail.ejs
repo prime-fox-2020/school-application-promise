@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<div class="container">
+  <h3>Subject Data With ID <%= data[0].id %></h3>
+
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Subject Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= data[0].id %></td>
+        <td><%= data[0].subject_name %></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<%- include('../partials/footer') %>

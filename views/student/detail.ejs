@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<div class="container">
+  <h3>Student Data with email <%= data.email %></h3>
+
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= data.id %></td>
+        <td><%= data.first_name %></td>
+        <td><%= data.last_name %></td>
+        <td><%= data.email %></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<%- include('../partials/footer') %>

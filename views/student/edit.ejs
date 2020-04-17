@@ -1,0 +1,49 @@
+<%- include('../partials/header') %>
+<div class="container">
+  <% if (data.edit) { %><%-include('../partials/alert-edit') %><% } %>
+  <h3>Edit Student Data</h3>
+  <div class="row">
+    <form class="col s12" action="/students/<%= data.id %>/edit" method="post">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">person</i>
+          <input id="first_name" name="first_name" type="text" class="validate" value="<%= data.first_name %>" autofocus required>
+          <label for="first_name">First Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix"></i>
+          <input id="last_name" name="last_name" type="text" class="validate" value="<%= data.last_name %>">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <i class="material-icons prefix"></i>
+      <label>Gender</label>
+      <select name="gender" class="browser-default" style="margin-left: 3rem; width: auto;">
+        <option value="" disabled>Choose your option</option>
+        <option value="male" <%= data.gender === 'male' ? 'selected' : '' %> >Male</option>
+        <option value="female" <%= data.gender === 'female' ? 'selected' : '' %> >Female</option>
+      </select>
+      <br /><br />
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">date_range</i>
+          <input id="birth_date" name="birth_date" type="text" class="validate" value="<%= data.edit ? data.birth_date : data.getBod() %>" required>
+          <!-- <input id="birth_date" name="birth_date" type="text" class="validate" value="" required> -->
+          <label for="birth_date">Birth of Date (DD-MM-YYYY)</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email" name="email" type="email" class="validate" value="<%= data.email %>" required>
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <button style="margin-left: 3rem;" type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Submit</button>
+      <a href="/students" class="waves-effect waves-light btn right">Show All Students</a>
+    </form>
+  </div>
+</div>
+<%- include('../partials/footer') %>

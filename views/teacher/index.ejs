@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+<div class="container">
+  <h3>Teachers Data</h3>
+
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% data.forEach(t => { %>
+      <tr>
+        <td><%= t.id %></td>
+        <td><%= t.first_name %></td>
+        <td><%= t.last_name %></td>
+        <td><%= t.email %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+</div>
+<%- include('../partials/footer') %>
