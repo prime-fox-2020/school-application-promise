@@ -1,0 +1,24 @@
+<%- include('../template/head', {title: act + ' DATA'}); %>
+
+<body>
+    <form style="padding: 2% 5%;" action="<%= act==='ADD'? '/subject/add' : '/subject/'+data[0].id+'/edit'%>"
+        method="POST">
+        <h1><%=act%> DATA SUBJECT</h1>
+        <% if(alert) {%>
+        <div class="alert alert-danger" role="alert">
+            <%=alert%>
+        </div>
+        <%}%>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Subject Name</label>
+            <input value="<%=data[0]?data[0].subject_name:''%>" name="subject_name" type="text" class="form-control"
+                id="exampleFormControlInput1" placeholder="subject name">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        &nbsp;<a href="/subject" type="button" class="btn btn-danger">Cancel</a>
+        <input style="visibility: hidden;" value="<%=act%>" name="action" type="text">
+        <input style="visibility: hidden;" value="<%=data[0]? data[0].id : ''%>" name="id" type="text">
+    </form>
+</body>
+
+</html>

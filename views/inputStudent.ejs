@@ -1,0 +1,51 @@
+<%- include('../template/head', {title: act + ' DATA'}); %>
+
+<body>
+    <form style="padding: 2% 5%;" action="<%= act==='ADD'? '/student/add' : '/student/'+data[0].id+'/edit'%>"
+        method="POST">
+        <h1><%=act%> DATA STUDENT</h1>
+        <% if(alert) {%>
+        <div class="alert alert-danger" role="alert">
+            <%=alert%>
+        </div>
+        <%}%>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Firts Name</label>
+            <input value="<%=data[0]?data[0].first_name:''%>" name="first_name" type="text" class="form-control"
+                id="exampleFormControlInput1" placeholder="first name">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Last Name</label>
+            <input value="<%=data[0]?data[0].last_name:''%>" name="last_name" type="text" class="form-control"
+                id="exampleFormControlInput1" placeholder="last name">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email</label>
+            <input value="<%=data[0]?data[0].email:''%>" name="email" type="email" class="form-control"
+                id="exampleFormControlInput1" placeholder="name@sekolah.id">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Gender</label>
+            <select name="gender" class="form-control" id="exampleFormControlSelect1">
+                <%if (data[0]) {%>
+                <option <%=data[0].gender==='male'?'selected':''%>>male</option>
+                <option <%=data[0].gender==='female'?'selected':''%>>female</option>
+                <%} else {%>
+                <option>male</option>
+                <option>female</option>
+                <%}%>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Birth Date</label>
+            <input value="<%=data[0]?data[0].birth_date:''%>" name="birth_date" type="text" class="form-control"
+                id="exampleFormControlInput1" placeholder="yyyy-mm-dd">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        &nbsp;<a href="/student" type="button" class="btn btn-danger">Cancel</a>
+        <input style="visibility: hidden;" value="<%=act%>" name="action" type="text">
+        <input style="visibility: hidden;" value="<%=data[0]? data[0].id : ''%>" name="id" type="text">
+    </form>
+</body>
+
+</html>

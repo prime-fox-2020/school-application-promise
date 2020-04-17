@@ -1,0 +1,38 @@
+<%- include('../template/head', {title: table}); %>
+<%- include('../template/nav', {title: table}); %>
+
+<% if(alert) {%>
+<div class="alert alert-success" role="alert">
+    <%=alert%>
+</div>
+<%}%>
+<table class="table">
+    <thead>
+        <tr>
+            <%for(let key in data[0]) {%>
+            <th scope="col"><%= key%></th>
+            <%}%>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let i in data) {%>
+        <tr>
+            <% for(let key in data[i]) {%>
+                <% if(key == 'id') {%> 
+                    <th scope="row"><%=data[i].id%></th>
+                <%} else {%> 
+                    <td><%=data[i][key]%></td> 
+                <%}%>
+            <%}%>
+            <td>
+            <a href="/<%=table%>/<%=data[i].id%>/edit" type="button" class="btn btn-primary">Edit</a>&nbsp;
+            <a href="/<%=table%>/<%=data[i].id%>/delete" type="button" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        <%}%>
+    </tbody>
+</table>
+</body>
+
+</html>
