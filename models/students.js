@@ -11,17 +11,19 @@ class Student {
     }
 
     static getTable(){
-        return new Promise((resolve,reject)=>{
-            const select = pool.query('SELECT * FROM "students" ORDER BY "id" ASC')
-            resolve(select)
-        })
+        const select = pool.query('SELECT * FROM "students" ORDER BY "id" ASC')
+        return select
     }
 
     static viewStudents(){
         return new Promise((resolve,reject)=>{
-            const Table = this.getTable()
-            const Rows = Table.rows
-            resolve(Table)
+            const data = this.getTable()
+            .then(res => {
+                resolve(data)
+              })
+            .catch(err =>{
+                reject(err)
+            })
         })
     }
 

@@ -6,7 +6,7 @@ class Controller {
         Students.viewStudents()
             .then(data=>{
                 console.log(data)
-                res.render("students",{data})
+                //res.send(data)
             })
             .catch(err=>{
                 res.send(err)
