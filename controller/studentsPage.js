@@ -3,7 +3,7 @@ const studentsModel = require('../models/studentsModel')
 
 class StudentsController {
     static getStudentsList (req, res) {
-        studentsModel.getStudents()
+        studentsModel.read()
         .then(data => {
             res.render('students.ejs', {data})
         })
@@ -17,7 +17,7 @@ class StudentsController {
     }
 
     static postStudent (req, res) {
-        studentsModel.studentPost(req.body)
+        studentsModel.update(req.body)
         .then (data => {
             res.redirect('/students')
         })
@@ -27,7 +27,7 @@ class StudentsController {
     }
 
     static getEditStudent (req, res) {
-        studentsModel.editStudents(req.params.id)
+        studentsModel.readEditStudents(req.params.id)
         .then (data => {
             res.render('edit_student.ejs', {
                 paramId : req.params.id,
@@ -44,7 +44,7 @@ class StudentsController {
         let first_name = req.body.firstname;
         let last_name = req.body.lastname;
         let email = req.body.email;
-        studentsModel.postEditStudents(id, first_name, last_name, email)
+        studentsModel.updateEditStudents(id, first_name, last_name, email)
         .then(data => {
             res.redirect('/students')
         })
@@ -54,7 +54,7 @@ class StudentsController {
     }
 
     static deleteStudent (req, res) {
-        studentsModel.deleteStudent(req.params.id)
+        studentsModel.delete(req.params.id)
         .then(data => {
             res.redirect('/students')
         })
@@ -64,9 +64,9 @@ class StudentsController {
     }
 
     static getEmail (req, res) {
-        studentsModel.getEmail(req.params.email)
+        studentsModel.readEmail(req.params.email)
         .then(data => {
-            res.send(data.rows)
+            res.render('students.ejs', {data: data.rows})
         })
         .catch(err => {
             res.send(err)

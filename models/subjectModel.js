@@ -1,12 +1,13 @@
 const pool = require('../connection')
 
 class SubjectModel {
-    static getSubject() {
-        return this.openFile()
+    
+    static read () {
+        return pool.query(`SELECT * FROM subject`)
     }
 
-    static openFile () {
-        return pool.query(`SELECT * FROM subject`)
+    static readId (id) {
+        return pool.query(`SELECT * FROM subject WHERE id = ${id}`)
     }
 }
 

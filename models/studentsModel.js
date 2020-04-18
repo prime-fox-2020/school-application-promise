@@ -1,20 +1,12 @@
 const pool = require('../connection')
 
 class StudentsModel {
-    static getStudents () {
-        return this.openFile ()
-    }
-
-    static studentPost (newStudent) {
-        return this.writeFile(newStudent)
-    }
-
-    static editStudents (data) {
+    static readEditStudents (data) {
         return pool.query(`SELECT first_name, last_name, email FROM students
         WHERE id = ${data}`)
     }
 
-    static postEditStudents (id, firstname, lastname, email) {
+    static updateEditStudents (id, firstname, lastname, email) {
         if (firstname.length < 1 || lastname.length < 1 || email.length < 1) {
             callback('Edit data failed, data invalid', null)
         } else {
@@ -28,11 +20,11 @@ class StudentsModel {
         }
     }
 
-    static getEmail (req) {
+    static readEmail (req) {
         return pool.query(`SELECT * FROM students WHERE email = '${req}'`)
     }
 
-    static openFile () {
+    static read () {
         return new Promise((res, rej) => {
             pool.query(`SELECT * FROM students`)
             .then(data => {
@@ -54,7 +46,7 @@ class StudentsModel {
         })
     }
 
-    static writeFile (data) {
+    static update (data) {
         let dob = data.birth_date.split('-')
         if (dob.length < 3 || data.firstname.length < 1 || data.lastname.length < 1 || data.email.length < 1 || data.gender.length < 1) {
             console.log('Data invalid')
@@ -71,7 +63,7 @@ class StudentsModel {
         }
     }
 
-    static deleteStudent (id) {
+    static delete (id) {
         return pool.query(`DELETE FROM students WHERE id = ${id}`)
     }
 }

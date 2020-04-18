@@ -2,7 +2,7 @@ const teachersModel = require('../models/teachersModel')
 
 class TeachersController {
     static getTeacherList (req, res) {
-        teachersModel.getTeachers()
+        teachersModel.read()
         .then(data => {
             res.render('teachers.ejs', { data: data.rows })
         })
@@ -12,9 +12,9 @@ class TeachersController {
     }
 
     static getTeachersId (req, res) {
-        teachersModel.getTeachersId(req.params.id)
+        teachersModel.readTeachersId(req.params.id)
         .then(data => {
-            res.send(data.rows)
+            res.render('teachers.ejs', { data: data.rows })
         })
         .catch(err => {
             res.send(err)
