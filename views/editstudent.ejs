@@ -1,0 +1,12 @@
+
+<%- include('partial/header', { title: "Edit Student", header: "Edit Student"} );%>
+<% if (error) { %>
+    <%= error %>
+<% }%> <br>
+<a href="/student" role="button">Show Student List</a>
+<form action="/student/<%= data.id%>/edit" method="POST">
+    <%- include('partial/form', {type:"Edit"}) ;%>
+    <button type="submit">Edit Student</button> 
+</form>
+</body>
+</html>

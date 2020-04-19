@@ -1,0 +1,11 @@
+<%- include('partial/header', { title: "Add New Student", header: "Insert New Student Data"} );%>
+    <% if (error) { %>
+        <%= error %>
+        <% }%><br>
+    <a href="/student" role="button">Show Student List</a>
+    <form action="/student/add" method="POST">
+        <%- include('partial/form', {type:"Add"}) ;%>
+        <button type="submit">Add Student</button>
+    </form>
+</body>
+</html>
